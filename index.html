@@ -16,24 +16,41 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
+    <!--<header>
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </header>-->
         <div class="header shadow">
-            <h2 class="content float_left">Welcome to Mos Eisly Cantina.</h2>
-            <form class="content float_right">
-                <label>UserName</label>
-                <input class="login input-sm" type="text" placeholder="Username" name="uName" required>
-                <label>Password</label>
-                <input class="login input-sm" type="password" placeholder="Password" name="pWord" required>
-                <button class="btn btn_success" type="button" disabled>Login</button>
-            </form>
-            <div class="content float_left"></div>
-            <ul class="content float_right">
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="404.html">404</a>
-                </li>
-            </ul>
+            <div class="content float_left">
+                <h2>Welcome to Mos Eisly Cantina.</h2>
+            </div>
+            <div class="content float_right">
+                <form class="margin_bottom">
+                    <label>UserName</label>
+                    <input class="login input-sm" type="text" placeholder="Username" name="uName" required>
+                    <label>Password</label>
+                    <input class="login input-sm" type="password" placeholder="Password" name="pWord" required>
+                    <button class="btn btn_success" type="button" disabled>Login</button>
+                </form>
+                <ul class="margin_top">
+                    <!--We need to list the list object in the opposite order-->
+                    <li class="dropdown">
+                        <a href="#setting" class="dropbtn"><span class="fa fa-cog"></span></a>
+                        <div class="dropdown-content">
+                            <a href="404.html">Settings</a>
+                            <a href="404.html">Logout</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+
+                </ul>
+            </div>
         </div>
 
         <!--<a href="about.html">About</a>-->

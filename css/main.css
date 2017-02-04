@@ -122,6 +122,87 @@ html, body {
     text-align: center;
 }
 
+/*Common css for navbar*/
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #333;
+    text-align: center;
+    /*height: 100%;*/
+    /*position: fixed;
+    overflow: hidden;*/
+}
+
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/*Vertical Navbar*/
+/*        li a{
+            display: block;
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        !* Change the link color on hover *!
+        li a:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        /*Horizontal Navbar*/
+
+li{
+    /*float: left;*/
+    float:right;
+}
+
+li a ,.dropbtn{
+    display: block;
+    padding: 14px 16px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover, .dropbtn:hover {
+    background-color: #c0c0c0;
+}
+
+li.dropdown{
+    display:inline-block;
+
+}
+
+.dropdown-content{
+    display:none;
+    position: absolute;
+    right: 50px;
+    background-color: #f9f9f9;
+    min-width: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 /*header{
     height: 100px;
     !*background-color: black;*!
@@ -137,7 +218,7 @@ html, body {
 }*/
 
 .header{
-    height: 100px;
+    height: 110px;
     /*background-color: black;*/
     /*color: white;*/
     margin-left: 20px;
@@ -163,8 +244,16 @@ html, body {
 
 .content{
     width: 45%;
-    margin: 20px;
+    margin: 10px 20px;
     padding: 5px;
+}
+
+.margin_top{
+    margin-top: 5px;
+}
+
+.margin_bottom{
+    margin-bottom: 5px;
 }
 
 .left_pane{
@@ -206,26 +295,6 @@ html, body {
     line-height: 1.5;
     border-radius: 3px;
 }
-
-/*ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100px;
-    text-align: right;
-}
-
-li{
-    float: left;
-    height: 50px;
-    background-color: #5cb85c;
-}
-
-li a{
-    display: block;
-    padding: 8px;
-    text-decoration: none;
-}*/
 
 .btn{
     display: inline-block;
