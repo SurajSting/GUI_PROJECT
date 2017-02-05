@@ -243,9 +243,12 @@ li.dropdown{
 */
 
 .content{
-    width: 45%;
     margin: 10px 20px;
     padding: 5px;
+}
+
+.content_width{
+    width: 45%;
 }
 
 .margin_top{
@@ -331,8 +334,25 @@ label{
     box-shadow: inset 5px 5px 5px #888888;
 }
 
+.about-center{
+    width: 60%;
+    margin: auto;
+}
 
+.about-section-height{
+    height: 100px;
+}
 
+#L_O{
+    height: auto;
+    width: auto;
+    max-height: 100px;
+    max-width: 100px;
+}
+
+#mail{
+    margin-top: 20px;
+}
 
 
 
