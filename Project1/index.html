@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <meta charset="UTF-8">
+        <title>Doing this since 1998</title>
+
+        <!--CSS Links-->
+       <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+        <link rel="stylesheet" type="text/css" href="css/homepage.css">
+
+        <!-- JS Scripts-->
+        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="data/menu.js"></script>
+        <script src="js/script.js"></script>
+        <!--<script> docLoaded(indexPageLoaded); </script>-->
+    </header>
+
+
+
+    <body>
+        <!-- Head -->
+        <img class="header" id="main_image" src="https://s-media-cache-ak0.pinimg.com/originals/4e/70/d4/4e70d42f81eb199f685fefdae4a424c9.jpg">
+        <main id="welcome" class="header">
+            <h1>Welcome to the Flying Dutchman</h1>
+        </main>
+        <hr>
+
+        <!-- Table 1 -->
+        <section id="section1">
+            <hr>
+            <h3>Select an alcoholic beverage</h3>
+            <p>Select your choice</p>
+            <table id="alcohol">
+                <tbody>
+                    <tr>
+                        <td><h5>Beer</h5>
+                            <div id = "td1">
+                            <img src="https://s-media-cache-ak0.pinimg.com/originals/70/c6/86/70c686edc2506c5f4314e00f3c6c2c84.jpg" alt="Span" title="Beer KF" height="250">
+                                <br>
+                                <label>10$</label><br>
+                                <label>Made in India</label>
+                                <input id = "Beer" type = "checkbox">
+                        </div></td>
+
+                        <td id = "td2"><h5>Draught Beer</h5>
+                            <div >
+                            <img src="http://www.brewbound.co.nz/content/images/thumbs/0001755_carlsberg-beer-15-pack-bottles_550.png" alt="Span" title="Carlsberg" height="250">
+                                <br>
+                                <label>11$</label><br>
+                                <label>Made in US</label>
+                                <input id = "Draught Beer" type = "checkbox">
+                        </div></td>
+
+                        <td id = "td3"><h5>Tap Beer</h5>
+                            <div>
+                            <img src="http://www.pngpix.com/wp-content/uploads/2016/08/PNGPIX-COM-Beer-PNG-Transparent-Image.png" alt="Span" title="Norrlands Guild" width="220">
+                                <br>
+                                <label>5$</label><br>
+                                <label>Made in Sweden</label>
+                                <input id = "Tap Beer" type = "checkbox">
+                        </div></td>
+
+                        <td>
+                            <p>
+                                <label for="recipient">Tips</label><br>
+                                <select id="recipient" class="recipi" name="rcp">
+                                    <option>Tip 5</option>
+                                    <option>Tip 10</option>
+                                    <option>Tip 15</option>
+                                    <option>Tip 20</option></select>
+                            </p>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <!-- Table 2 -->
+        <section id="section2">
+            <h3>Select a non-alcoholic beverage</h3>
+            <table id="non-alcohol">
+                <tbody>
+                    <tr>
+                        <td id = "td4"><h5>Coffee</h5>
+                            <div>
+                            <img src="https://cdn.shopify.com/s/files/1/1162/6052/products/product-image-mug_3_1024x1024.png?v=1458576844" alt="Span" title="Cafe" height="200">
+                                <form class="hot_cold">
+                                    <input id = "coffee_h" class="bev1_txt" title="Cafe_h" type="radio" name="temperature" value="hot" checked="checked">Hot<br>
+                                    <input id = "coffee_c" class="bev1_txt" title="Cafe_c" type="radio" name="temperature" value="cold">Cold<br>
+                                </form>
+                                <br>
+                                <label>5$</label><br>
+                                <label>Made in India</label>
+                                <input id = "Coffee" type = "checkbox">
+                        </div></td>
+
+                        <td id = "td5"><h5>Tea</h5>
+                            <div>
+                            <img src="http://www.pngall.com/wp-content/uploads/2016/04/Tea-Transparent.png" alt="Span" title="Cafe" height="200">
+                                <form class="hot_cold">
+                                    <input id = "tea_h" type="radio" name="temperature" value="hot">Hot<br>
+                                    <input id = "tea_c" type="radio" name="temperature" value="cold">Cold<br>
+                                </form>
+                                <br>
+                                <label>5$</label><br>
+                                <label>Made in Netherlands</label>
+                                <input id = "Tea" type = "checkbox">
+                        </div></td>
+
+                        <td id = "td6">
+                            <h5>Mocktail</h5>
+                            <div>
+                            <img src="http://www.pngmart.com/files/1/Cocktail-PNG-HD.png" alt="Span" title="Cafe" height="250">
+                                <br>
+                                <label>5$</label><br>
+                                <label>Made in Sweden</label>
+                                <input id = "Mocktail" type = "checkbox">
+                        </div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <!--Button Purchase-->
+        <div id = "bill" align="right">
+
+        </div>
+
+        <div align="right">
+            <button id = "makeOrder" type="submit"><img src="https://medmartonline.com/skin/frontend/sm_market/default/images/purchase-orders-icon.png" height="100" width="200"></button>
+        </div>
+
+        <hr>
+
+
+    <footer>
+        <div id = "drinker"></div>
+
+
+        <p>Address: S.t. Olofsgatan 15/4, 753 32 Uppsala</p>
+        <p>Contact information: <a href="mailto:someone@example.com">
+            someone@example.com</a>.</p>
+        <p>&reg</p>
+    </footer>
+    </body>
+
+</html>

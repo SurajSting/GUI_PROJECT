@@ -1,0 +1,106 @@
+body {
+    background-color: black;
+    font-family: Arial;
+    font-size: 20px;
+    color: aquamarine;
+}
+
+/*
+    Header Section
+*/
+
+.header {
+    margin: 10px 10px 10px 10px;
+    position: absolute;
+
+    overflow: hidden;
+    width:100%;
+    text-align:center;
+}
+
+#main_image{
+    height: 50%;
+    width: 98%;
+    opacity: 0.4;
+}
+
+#welcome {
+    margin-top: 120px;
+    color: gold;
+
+    font-family: Vivaldi;
+    font-size: xx-large;
+}
+
+
+/*
+    Body
+ */
+
+
+                            /* Table 1 */
+#section1 {
+    margin-top: 400px;
+    margin-bottom: 150px;
+
+
+    width:100%;
+    text-align:center;
+}
+
+#alcohol{
+    border-style: groove;
+    height: auto;
+    width: 100%;
+}
+
+#alcohol tr {
+    height: 33%;
+    align-content: center;
+
+    background-color: #030033;
+}
+
+.recipi {
+    color: red;
+}
+
+
+                            /* Table 2 */
+#section2 {
+    margin-top: 100px;
+    margin-bottom: 150px;
+
+    width:100%;
+    text-align:center;
+}
+
+#non-alcohol{
+    border-style: groove;
+    height: auto;
+    width: 100%;
+}
+
+#non-alcohol tr {
+    height: 33%;
+    align-content: center;
+
+    background-color: #030033;
+}
+
+.hot_cold{
+    width: 90%;
+    text-align: right;
+}
+
+
+
+
+                            /* Purcase */
+button{
+    margin: 50px 100px 100px 100px;
+}
+
+button:hover{
+    background-color: darkgreen;
+}
