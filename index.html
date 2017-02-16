@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/flag-icon.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -29,6 +30,10 @@
         <h2>Welcome to Mos Eisly Cantina.</h2>
     </div>
     <div class="content content_width float_right">
+        <ul id="flags">
+            <li><span class="flag-icon flag-icon-gb"></span></li>
+            <li><span class="flag-icon flag-icon-se"></span></li>
+        </ul>
         <form class="margin_bottom">
             <label>UserName</label>
             <input class="login input-sm" type="text" placeholder="Username" name="uName" required>
@@ -36,7 +41,7 @@
             <input class="login input-sm" type="password" placeholder="Password" name="pWord" required>
             <button class="btn btn_success" type="button" disabled>Login</button>
         </form>
-        <ul class="margin_top">
+        <ul id="navbar" class="margin_top">
             <!--We need to list the list object in the opposite order-->
             <li class="dropdown" title="Settings">
                 <a href="#setting" class="dropbtn"><span class="fa fa-cog"></span></a>
@@ -44,6 +49,9 @@
                     <a href="404.html">Settings</a>
                     <a href="404.html">Logout</a>
                 </div>
+            </li>
+            <li>
+                <a href="links.html" title="About">Links</a>
             </li>
             <li>
                 <a href="about.html" title="About">About</a>
@@ -70,7 +78,7 @@
 
 </div>
 
-<footer class="site-footer">
+<footer class="footer">
     <p>&copy Group 17: Wang, Murali, Larsson, Hansson</p>
 </footer>
 
