@@ -1,8 +1,9 @@
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Prasing from JSON</title>
-<script type="text/javascript" src="jquery-1.11.2.js"></script>
+	<meta charset="UTF-8">
+	<title>Prasing from JSON</title>
+	<script type="text/javascript" src="jquery-1.11.2.js"></script>
+	<script src="js/main.js"></script>
 </head>
 <body>
 
@@ -19,75 +20,16 @@ Actions: <select id="action">
 
 <p id="showing">blaa</p>
 <div id="show"></div>
-<div>
-		<form name="display">
-			<table id="JSONtable" style="border:3px #FFAA33 solid; padding:5px;" rules="all" align="center">
-			<tr></tr>
-			<td>Hello World</td>
 
-			</table>
-		</form>
-		<script type="text/javascript">
-			var e = document.getElementById("action");
-			var strUser = e.options[e.selectedIndex].value;
-			console.log(strUser);
-			$('#show').html(strUser);
-
-		</script>
-
+<div id = "notebook">
+	<div>
+		<p class="namn"> </p>
+		<p class="namn2"> </p>
+		<p class="price"> </p>
+		<p class="count" hidden="hidden"> </p>
+	</div>
 </div>
 <div>
-<script>
-
-			
-
-			document.write("1233");
-	
-	function getData(){
-			
-			
-			
-			$.ajax({
-			  url: "http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jorass&action=inventory_get",
-			  type: "POST",
-			  data: {myval:vall},
-			  dataType: "json",
-			  success: function(Jdata) {
-				
-				
-					var Numdata = Jdata.length;
-					var idd = 0;
-					$('#JSONtable').empty();
-					$('#JSONtable').append("<tr bgcolor='#FFF77'><th>num</th><th>id</th><th>Summary</th><th>score</th><th>Action</th></tr>");
-					for(var i = 0; i < Numdata; i++){
-						idd += 1;
-						aid[i] = Jdata[i]["aid"];
-						osco[i] = Jdata[i]["score"];
-						sum[i] = Jdata[i]["desc"];
-						$('#JSONtable').append("<tr><td align='center'>"+idd
-						+"</td><td align='center'>"+Jdata[i]["aid"]
-						+"</td><td width='800'>"+Jdata[i]["desc"]
-						+"</td><td align='center'>"+Jdata[i]["score"]
-						+"</td><td align='center'><a href='delete.php?score="+osco[i]+"&sum="+Jdata[i]["desc"]+"'>刪除</a></td></tr>");
-						
-				
-					}				
-					ids = idd;
-					idd = 0;
-				
-				
-			    },
-			
-			  error: function() {
-
-				alert("ERROR!!!");
-			  }		  
-			});
-			
-		}
-		
-
-</script>
 </div>
 </body>
 </html>
