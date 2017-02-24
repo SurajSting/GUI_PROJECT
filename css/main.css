@@ -102,9 +102,10 @@ html, body {
     height: 100%;
 }
 .page-wrap {
+    position: relative;
     min-height: 100%;
-    /* equal to footer height */
     margin-bottom: -60px;
+    top: -231px;
 }
 .page-wrap:after {
     content: "";
@@ -114,6 +115,7 @@ html, body {
     position: absolute;
     width: 100%;
     height: 60px;
+
     /*border-top: 1px solid #e3e3e3;*/
 }
 .site-footer {
@@ -217,10 +219,14 @@ li.dropdown{
     border-bottom-right-radius: 5px;
 }*/
 
+
 .header{
+    position: relative;
+    top: -230px;
+    z-index: 1;
     height: 110px;
-    /*background-color: black;*/
-    /*color: white;*/
+    /* background-color: black; */
+    /* color: white; */
     margin-left: 20px;
     margin-right: 20px;
     padding-left: 5px;
@@ -242,6 +248,15 @@ li.dropdown{
 }
 */
 
+    #banner{
+        
+    top: -117px;
+    position: relative;
+    width: 100%;
+    opacity: 0.9;
+    z-index: 1;
+    }
+
 .content{
     margin: 10px 20px;
     padding: 5px;
@@ -260,7 +275,7 @@ li.dropdown{
 }
 
 .left_pane{
-    width: 60%;
+    width: 94.4%;
     margin-right: 10px;
 }
 
@@ -269,8 +284,12 @@ li.dropdown{
 }
 
 .right_pane{
-    width: 30%;
+    position: absolute;
+    right: 0px;
+    width: 24%;
+    height: 400px;
     margin-left: 10px;
+    display: none;
 }
 
 .float_right{
@@ -332,7 +351,9 @@ label{
 
 .shadow{
     box-shadow: inset 5px 5px 5px #888888;
+    
 }
+
 
 .about-center{
     width: 60%;
@@ -352,6 +373,79 @@ label{
 
 #mail{
     margin-top: 20px;
+}
+#div_buy{
+    position: absolute;
+    bottom: -5px;
+    left: 31px;
+    
+}
+#btn_purchase{
+     position: relative;
+    left: 185px;
+    bottom: 28px; 
+}
+.selected_article{
+    
+    height: 34px;
+    border: dashed 1px;
+    float: left;
+    width: 100%;
+    
+}
+.drink_type_name{
+    float: left;
+    background-color: inherit;
+    border: none;
+    border-color: transparent;
+    
+}
+.quantity{
+    float: left;
+    position: relative;
+    left: -84px;
+}
+.increment{
+    left: -134px;
+    position: relative;
+    
+}
+.price{
+     position: relative;
+    left: -80px;
+    top: -22px;   
+}
+.delete{
+    position: relative;
+    top: -46px;
+    left: -12px;
+    background: #ccd1d4;
+    background-image: -webkit-linear-gradient(top, #ccd1d4, #74858f);
+    background-image: -moz-linear-gradient(top, #ccd1d4, #74858f);
+    background-image: -ms-linear-gradient(top, #ccd1d4, #74858f);
+    background-image: -o-linear-gradient(top, #ccd1d4, #74858f);
+    background-image: linear-gradient(to bottom, #ccd1d4, #74858f);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    height: 26px;
+    width: 24px;
+    border: 0px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 15px;
+    /* padding: 4px 12px 8px 13px; */
+    text-decoration: none;
+}
+
+.delete:hover {
+  background: #ff0000;
+  background-image: -webkit-linear-gradient(top, #ff0000, #000000);
+  background-image: -moz-linear-gradient(top, #ff0000, #000000);
+  background-image: -ms-linear-gradient(top, #ff0000, #000000);
+  background-image: -o-linear-gradient(top, #ff0000, #000000);
+  background-image: linear-gradient(to bottom, #ff0000, #000000);
+  text-decoration: none;
 }
 
 
