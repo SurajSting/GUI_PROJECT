@@ -258,7 +258,7 @@ ul{
 }
 
 .left_pane{
-    width: 60%;
+    width: 90%;
     margin-right: 10px;
 }
 
@@ -266,7 +266,13 @@ ul{
     float: left;
 }
 
+
+
 .right_pane{
+    position: fixed;
+    top: 15%;
+    right: 1%;
+    display: none;
     width: 30%;
     margin-left: 10px;
 }
@@ -533,10 +539,17 @@ label{
     }
     
     }
+
+.beer_div {
+    border: 1px dashed;
+}
+
+
 #div_buy{
     position: absolute;
     
 }
+
 #btn_purchase{
      position: relative;
 

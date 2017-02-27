@@ -3,14 +3,26 @@
 $(document).on("click", '.beer_div', function(e){
     
     if($('.right_pane').css("display") == ("none")){
-        $('.left_pane').animate({"width": '-=30%'}, 500);
+        $('.left_pane').animate({"width": '-=33%'}, 500);
     } else {
-        $('.left_pane').animate({"width": '+=30%'}, 500);
+        $('.left_pane').animate({"width": '+=33%'}, 500);
     }
     
     $('.right_pane').toggle('slow');
 
-    $('#test').html("hello");
+    //Putting Data into the onClick div
+    console.log($('#'+e.currentTarget.id+'').children(':nth(2)').html());
+    $('#purchase_form').append('' +
+        '<div class="selected_article">' +
+            '<input type="hidden" value="'+e.currentTarget.id+'">' +
+        '   <p class="quantity">1</p>' +
+        '   <span class="increment">' +
+        '       <button class="button_inc_dec">+</button>' +
+        '       <button class="button_inc_dec">-</button>' +
+        '   </span>>' +
+        '   <p class="price">"+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>' +
+        '<button class="delete">x</button>' +
+        '</div>>');
 });
 
 function getData(){
@@ -32,7 +44,8 @@ function getData(){
                         }
                         $("#notebook").append("<div class='beer_div' id="+field[j].beer_id+">"+
                             "<p class='name'>Namn1: "+field[j].namn+"</p> " +
-                            "<p class='price'>Price: "+field[j].price+"</p> "+
+                            "<label class='priceLabel' for='priceVal'>Price: </label><label id='priceVal' class='priceValue'>"+field[j].price+"</label>" +
+                            "<br>" +
                             "<p class='count' style='display: "+is_hidden+"'>Count: "+field[j].count+"</p>" +
                         " </div>");
                     }
