@@ -531,4 +531,73 @@ label{
     h3 {
         page-break-after: avoid;
     }
+    
+    }
+#div_buy{
+    position: absolute;
+    
+}
+#btn_purchase{
+     position: relative;
+
+}
+.selected_article{
+    
+    height: 34px;
+    border: dashed 1px;
+    float: left;
+    width: 100%;
+    
+}
+.drink_type_name{
+    float: left;
+    background-color: inherit;
+    border: none;
+    border-color: transparent;
+    
+}
+.quantity{
+    float: left;
+    position: relative;
+
+}
+.increment{
+
+    position: relative;
+    
+}
+.price{
+     position: relative;
+}
+.delete{
+    position: relative;
+
+    background: #ccd1d4;
+    background-image: -webkit-linear-gradient(top, #ccd1d4, #74858f);
+    background-image: -moz-linear-gradient(top, #ccd1d4, #74858f);
+    background-image: -ms-linear-gradient(top, #ccd1d4, #74858f);
+    background-image: -o-linear-gradient(top, #ccd1d4, #74858f);
+    background-image: linear-gradient(to bottom, #ccd1d4, #74858f);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    height: 26px;
+    width: 24px;
+    border: 0px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 15px;
+    /* padding: 4px 12px 8px 13px; */
+    text-decoration: none;
+}
+
+.delete:hover {
+  background: #ff0000;
+  background-image: -webkit-linear-gradient(top, #ff0000, #000000);
+  background-image: -moz-linear-gradient(top, #ff0000, #000000);
+  background-image: -ms-linear-gradient(top, #ff0000, #000000);
+  background-image: -o-linear-gradient(top, #ff0000, #000000);
+  background-image: linear-gradient(to bottom, #ff0000, #000000);
+  text-decoration: none;
+}
 }
