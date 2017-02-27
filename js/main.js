@@ -15,6 +15,7 @@ $(document).on("click", '.beer_div', function(e){
     $('#purchase_form').append('' +
         '<div class="selected_article">' +
             '<input type="hidden" value="'+e.currentTarget.id+'">' +
+        '   <p class="beer_name"> '+ $('#'+e.currentTarget.id+'').children(':nth(1)').html()+ "</p>" +
         '   <p class="quantity">1</p>' +
         '   <span class="increment">' +
         '       <button class="button_inc_dec">+</button>' +
@@ -43,7 +44,8 @@ function getData(){
                             is_hidden = 'initial';
                         }
                         $("#notebook").append("<div class='beer_div' id="+field[j].beer_id+">"+
-                            "<p class='name'>Namn1: "+field[j].namn+"</p> " +
+                            "<label class='nameLabel'>Name: </label>" +
+                            "<p class='name'>"+field[j].namn+"</p> " +
                             "<label class='priceLabel' for='priceVal'>Price: </label><label id='priceVal' class='priceValue'>"+field[j].price+"</label>" +
                             "<br>" +
                             "<p class='count' style='display: "+is_hidden+"'>Count: "+field[j].count+"</p>" +
