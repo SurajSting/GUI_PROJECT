@@ -20,7 +20,7 @@ $(document).on("click", '.beer_div', function(e){
         '       <button class="button_inc_dec">+</button>' +
         '       <button class="button_inc_dec">-</button>' +
         '   </span>>' +
-        '   <p class="price">"+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>' +
+        '   <p class="price">'+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>" +
         '<button class="delete">x</button>' +
         '</div>>');
 });
