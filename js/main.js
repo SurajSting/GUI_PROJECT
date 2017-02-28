@@ -1,5 +1,6 @@
 
-var id_array = []; 
+var id_array = [];
+var beer_count_purchase = 2;
 
 
 //When adding a product, the 'total products' div show up. Right now it toggleing.
@@ -74,8 +75,8 @@ $(document).on("click", '.beer_div', function(e){
         '   <p class="beer_name"> '+ $('#'+e.currentTarget.id+'').children(':nth(1)').html()+ "</p>" +
         '   <p class="quantity">1</p>' +
         '   <span class="increment">' +
-        '       <button type="button" class="btn_inc btn_change">+</button>' +
-        '       <button type="button" class="btn_dec btn_change">-</button>' +
+        '       <button type="button" class="btn_inc">+</button>' +
+        '       <button type="button" class="btn_dec">-</button>' +
         '   </span>' +
         '   <p class="price">'+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>" +
         '<button type="button" class="delete">x</button>' +
@@ -85,8 +86,19 @@ $(document).on("click", '.beer_div', function(e){
 
 //DECREMENT BUTTON ON PURCHASE FORM
 $(document).on("click", '.btn_dec', function(e) {
-    alert("NO PLEASE");
-    console.log(e.currentTarget.siblings());
+    var div_id = e.currentTarget.parentElement.parentElement.firstChild.attributes[1].value;
+
+    var right_amount = e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML;
+    console.log(right_amount);
+    right_amount--;
+    e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML = right_amount;
+
+
+    var new_value = $('#'+ div_id+'').children(':nth(5)').html();
+    new_value++;
+
+    $('#'+ div_id+'').children(':nth(5)').html(new_value);
+
 });
 
 
@@ -147,6 +159,7 @@ $(document).on("click", '.btn_success', function(e){
 });
 
 
+//GETTING THE DATA FROM THE API
 function getData(){
 
     $.getJSON("http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jorass&action=inventory_get", function(result){
