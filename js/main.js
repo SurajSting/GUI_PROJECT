@@ -57,10 +57,6 @@ $(document).on("click", '.beer_div', function(e){
         alert("No more beers for you!");
         
     }
-
-
-
-    
     
     //console.log($('#'+e.currentTarget.id+'').children(':nth(5)').html());
     //console.log($('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html());
@@ -78,8 +74,8 @@ $(document).on("click", '.beer_div', function(e){
         '   <p class="beer_name"> '+ $('#'+e.currentTarget.id+'').children(':nth(1)').html()+ "</p>" +
         '   <p class="quantity">1</p>' +
         '   <span class="increment">' +
-        '       <button class="button_inc_dec">+</button>' +
-        '       <button class="button_inc_dec">-</button>' +
+        '       <button class="btn_inc btn_change">+</button>' +
+        '       <button class="btn_dec btn_change">-</button>' +
         '   </span>' +
         '   <p class="price">'+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>" +
         '<button class="delete">x</button>' +
@@ -87,7 +83,13 @@ $(document).on("click", '.beer_div', function(e){
     }
 });
 
+//DECREMENT BUTTON ON PURCHASE FORM
+$(document).on("click", '.btn_dec', function(e) {
 
+});
+
+
+//USERNAME AND PASSWORD FUNCTIONALITY
 $(document).on("click", '.btn_success', function(e){
     
     var uName = $('#uName').val();
@@ -153,6 +155,3 @@ function getData(){
         });
     });
 }
-
-    
- //getData();
