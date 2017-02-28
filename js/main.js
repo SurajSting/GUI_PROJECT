@@ -94,38 +94,21 @@ function deleteFromIdArray(id){
 }
 
 
+//ADDS UP ALL PURCHASES IN THE PURCHASE_FORM AND DISPLAYS IT IN TOTAL
 function upDateTotal(){
     
-    //for(var i = 0; i < $('#purchase_form').length; i++){
-    console.log($('#purchase_form').children().length);
-    
-    //console.log
     var total = 0;
     
     for (var i = 0; i < $('#purchase_form').children().length; i++){
-        
-        console.log($('#purchase_form').children(':nth('+i+')'));
-        
-        console.log("quant: " + $('#purchase_form').children(':nth('+i+')').children(':nth(2)').html());
-    
-        console.log("price: " + $('#purchase_form').children(':nth('+i+')').children(':nth(5)').html());
-        
-       var price = parseFloat($('#purchase_form').children(':nth('+i+')').children(':nth(5)').html());
+
+        var price = parseFloat($('#purchase_form').children(':nth('+i+')').children(':nth(5)').html());
         
         var quantity = parseFloat($('#purchase_form').children(':nth('+i+')').children(':nth(2)').html());
         
         total += (price * quantity);
-        
-        console.log(total);
-        
-        $('#total').html(total);
-        
-        
     }
-    //for (var i = 0; i < 
-    //}
-    //loop through purchase form
-    //extract lastChild from every child + multiply it with quantity/rightAmount
+    
+     $('#total').html(total);
     
 }
 
