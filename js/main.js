@@ -91,6 +91,13 @@ function deleteFromIdArray(id){
                }
 
            }
+
+        if(id_array.length == 0)
+        {
+            $('.left_pane').animate({"width": '+=33%'}, 500);
+            $('.right_pane').slideUp();
+        }
+
 }
 
 
