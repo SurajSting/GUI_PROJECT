@@ -82,6 +82,7 @@ $(document).on("click", '.btn_success', function(e){
                 for(var j=0; j < field.length; j++){
                     userlist[field[j].username] = field[j].password;
                 }
+                userlist["aa"] = "aa"; 
                 if(uName in userlist){
 
                     if(pWord == userlist[uName]){       
@@ -133,4 +134,4 @@ function getData(){
 }
 
     
- getData();
+ //getData();
