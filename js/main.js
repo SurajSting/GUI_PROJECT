@@ -2,6 +2,69 @@
 var id_array = [];
 var beer_count_purchase = 2;
 
+    //Checking duplicate entry on the purchase form:
+    function checkIfAlreadyPicked(id) {
+        for (var i = 0; i < id_array.length; i++) {
+            //alert("fu");
+            console.log("fu " + id_array[i] + " " + id);
+            if (id_array[i] == parseInt(id)){
+                console.log("TRUUUEE " + i);
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    //CHECK IF THERE ARE ANY BEER LEFT FOR THAT PARTICULAR ARTICLE
+    
+    function beerRightPaneIncrement(id){
+        
+        var beer_left = $('#'+id+'').children(':nth(5)').html(); //leftpane beer-count-variable
+
+        if(beer_left >= 1){
+            beer_left--;
+            $('#'+id+'').children(':nth(5)').html(beer_left);
+
+            var rightPaneBeerIndex = checkIfAlreadyPicked(id); 
+            //console.log("counter: " + counter);
+
+            if(rightPaneBeerIndex == -1){ //IF THE BEER HAS NOT BEEN CHOSEN
+                id_array[id_array.length] = id;
+                //console.log(id_array);
+                createDiv(id);
+            }
+            else
+            {
+                var amount = parseInt($('#purchase_form').children(':nth('+rightPaneBeerIndex+')').children(':nth(2)').html());
+                amount++;
+                $('#purchase_form').children(':nth('+rightPaneBeerIndex+')').children(':nth(2)').html(amount);
+
+
+            //$('#'+e.currentTarget.id+'').children(':nth(6)');
+            }
+        } 
+        else
+        {
+            alert("No more beers for you!");
+
+        }
+    
+    }
+    
+    function createDiv(id){
+    $('#purchase_form').append('' +
+        '<div class="selected_article" id="r'+id+'">' +
+            '<input type="hidden" value="'+id+'">' +
+        '   <p class="beer_name"> '+ $('#'+id+'').children(':nth(1)').html()+ "</p>" +
+        '   <p class="quantity">1</p>' +
+        '   <span class="increment">' +
+        '       <button type="button" class="btn_inc">+</button>' +
+        '       <button type="button" class="btn_dec">-</button>' +
+        '   </span>' +
+        '   <p class="price">'+ $('#'+id+'').children(':nth(2)').html()+ "</p>" +
+        '<button type="button" class="delete">x</button>' +
+        '</div>');
+    }
 
 //When adding a product, the 'total products' div show up. Right now it toggleing.
 $(document).on("click", '.beer_div', function(e){
@@ -13,81 +76,24 @@ $(document).on("click", '.beer_div', function(e){
         //$('.left_pane').animate({"width": '+=33%'}, 500);
     }
     
-    //$('.right_pane').toggle('slow');
+    beerRightPaneIncrement(e.currentTarget.id);
 
-    //Checking duplicate entry on the purchase form:
-    function checkIfAlreadyPicked() {
-        for (var i = 0; i < id_array.length; i++) {
-            //alert("fu");
-            console.log("fu " + id_array[i] + " " + e.currentTarget.id);
-            if (id_array[i] == parseInt(e.currentTarget.id)){
-                console.log("TRUUUEE " + i);
-                return i;
-            }
-        }
-        return -1;
-    }
-    
-    //CHECK IF THERE ARE ANY BEER LEFT FOR THAT PARTICULAR ARTICLE
-    var beer_left = $('#'+e.currentTarget.id+'').children(':nth(5)').html();
-        
-    if(beer_left >= 1){
-        beer_left--;
-        $('#'+e.currentTarget.id+'').children(':nth(5)').html(beer_left);
-        
-        var counter = checkIfAlreadyPicked();
-        //console.log("counter: " + counter);
-
-        if(counter == -1){
-            id_array[id_array.length] = e.currentTarget.id;
-            console.log(id_array);
-            createDiv();
-        }
-        else
-        {
-            var amount = parseInt($('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html());
-            amount++;
-            $('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html(amount);
-        
-        
-        //$('#'+e.currentTarget.id+'').children(':nth(6)');
-        }
-    } 
-    else
-    {
-        alert("No more beers for you!");
-        
-    }
-    
-    //console.log($('#'+e.currentTarget.id+'').children(':nth(5)').html());
-    //console.log($('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html());
-
-
-
-    //Putting Data into the onClick div
-  //  console.log($('#'+e.currentTarget.id+'').children(':nth(2)').html());
-    
-    
-    function createDiv(){
-    $('#purchase_form').append('' +
-        '<div class="selected_article" id="r'+e.currentTarget.id+'">' +
-            '<input type="hidden" value="'+e.currentTarget.id+'">' +
-        '   <p class="beer_name"> '+ $('#'+e.currentTarget.id+'').children(':nth(1)').html()+ "</p>" +
-        '   <p class="quantity">1</p>' +
-        '   <span class="increment">' +
-        '       <button type="button" class="btn_inc">+</button>' +
-        '       <button type="button" class="btn_dec">-</button>' +
-        '   </span>' +
-        '   <p class="price">'+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>" +
-        '<button type="button" class="delete">x</button>' +
-        '</div>');
-    }
 });
-    function deleteDiv(id) {
 
-    }
 
-//DECREMENT BUTTON ON PURCHASE FORM
+
+
+
+//WHEN PRESSING THE INCREMENT BUTTON ON PURCHASE FORM
+$(document).on("click", '.btn_inc', function(e){
+    
+    beerRightPaneIncrement(e.currentTarget.parentElement.parentElement.id.substring(1));
+    
+    //console.log(e.currentTarget.parentElement.parentElement.id.substring(1));
+});
+
+
+//WHEN PRESSING THE DECREMENT BUTTON ON PURCHASE FORM
 $(document).on("click", '.btn_dec', function(e) {
     var div_id = e.currentTarget.parentElement.parentElement.firstChild.attributes[1].value;
     console.log("div_id: " + div_id);
@@ -96,11 +102,12 @@ $(document).on("click", '.btn_dec', function(e) {
     console.log(right_amount);
 
 
+    //IF THERE'S ONLY ONE LEFT, THEN DELETE THE WHOLE ENTRY
    if(right_amount == 1){
        //deleteDiv(e.currentTarget.parentElement.parentElement);
        $('#'+e.currentTarget.parentElement.parentElement.id+'').remove();
        
-       //console.log(id_array.inArray(div_id));
+       //DELETE IT FROM THE ID_ARRAY
        for(var i = 0; i < id_array.length; i++){
            if(div_id == id_array[i]){
                id_array.splice(i, 1);
