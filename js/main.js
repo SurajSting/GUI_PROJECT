@@ -93,11 +93,20 @@ function deleteFromIdArray(id){
 }
 
 
+function upDateTotal(){
+    
+    //for(var i = 0; i < $('#purchase_form').length; i++){
+    console.log($('#purchase_form').);
+    //for (var i = 0; i < 
+    //}
+    
+}
 
 //WHEN PRESSING THE INCREMENT BUTTON ON PURCHASE FORM
 $(document).on("click", '.btn_inc', function(e){
     
-    beerRightPaneIncrement(e.currentTarget.parentElement.parentElement.id.substring(1));
+        upDateTotal();
+    //beerRightPaneIncrement(e.currentTarget.parentElement.parentElement.id.substring(1));
     
     //console.log(e.currentTarget.parentElement.parentElement.id.substring(1));
 });
