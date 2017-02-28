@@ -74,18 +74,19 @@ $(document).on("click", '.beer_div', function(e){
         '   <p class="beer_name"> '+ $('#'+e.currentTarget.id+'').children(':nth(1)').html()+ "</p>" +
         '   <p class="quantity">1</p>' +
         '   <span class="increment">' +
-        '       <button class="btn_inc btn_change">+</button>' +
-        '       <button class="btn_dec btn_change">-</button>' +
+        '       <button type="button" class="btn_inc btn_change">+</button>' +
+        '       <button type="button" class="btn_dec btn_change">-</button>' +
         '   </span>' +
         '   <p class="price">'+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>" +
-        '<button class="delete">x</button>' +
+        '<button type="button" class="delete">x</button>' +
         '</div>>');
     }
 });
 
 //DECREMENT BUTTON ON PURCHASE FORM
 $(document).on("click", '.btn_dec', function(e) {
-
+    alert("NO PLEASE");
+    console.log(e.currentTarget.siblings());
 });
 
 
