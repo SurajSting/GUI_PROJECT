@@ -188,16 +188,16 @@ $(document).on("click", '.btn_success', function(e){
                         if(userid[uName] == "3"){
                             
                             $("#margin_bottom").hide();
-                            $("#welcome").show().append("Users: "+ userfirst[uName]+"!");
+                            $("#welcome").show().append("Users: "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>Log Out</button>");
 
                         }else if(userid[uName] == "0"){
                            
                             $("#margin_bottom").hide();
-                            $("#welcome").show().append("Administrator: "+ userfirst[uName]+"!");
+                            $("#welcome").show().append("Administrator: "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>Log Out</button>");
                         }else{
                            
                             $("#margin_bottom").hide();
-                            $("#welcome").show().append("No one: "+ userfirst[uName]+"!");
+                            $("#welcome").show().append("No one: "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>Log Out</button>");
                         }
 
 
