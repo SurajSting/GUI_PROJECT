@@ -1,14 +1,40 @@
 
+var id_array = [];
 //When adding a product, the 'total products' div show up. Right now it toggleing.
 $(document).on("click", '.beer_div', function(e){
     
     if($('.right_pane').css("display") == ("none")){
+        $('.right_pane').slideDown();
         $('.left_pane').animate({"width": '-=33%'}, 500);
     } else {
-        $('.left_pane').animate({"width": '+=33%'}, 500);
+        //$('.left_pane').animate({"width": '+=33%'}, 500);
     }
     
-    $('.right_pane').toggle('slow');
+    //$('.right_pane').toggle('slow');
+
+    //Checking duplicate entry on the purchase form:
+    function check() {
+        for (var i = 0; i < id_array.length; i++) {
+            if (id_array[i] == e.currentTarget.id)
+                return i;
+        }
+        return 0;
+    }
+
+    var counter = check();
+
+    if(counter == 0){
+        id_array[id_array.length] = e.currentTarget.id;
+        console.log(id_array);
+    }
+    else
+    {
+        $('#purchase_form').children(':nth('+counter+')').children(':nth(2)');
+    }
+
+    console.log($('#purchase_form').children(':nth('+counter+')').children(':nth(2)'));
+
+
 
     //Putting Data into the onClick div
     console.log($('#'+e.currentTarget.id+'').children(':nth(2)').html());
@@ -20,7 +46,7 @@ $(document).on("click", '.beer_div', function(e){
         '   <span class="increment">' +
         '       <button class="button_inc_dec">+</button>' +
         '       <button class="button_inc_dec">-</button>' +
-        '   </span>>' +
+        '   </span>' +
         '   <p class="price">'+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>" +
         '<button class="delete">x</button>' +
         '</div>>');
