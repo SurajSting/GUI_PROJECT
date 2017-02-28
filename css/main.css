@@ -323,6 +323,12 @@ ul{
     border-color: #4cae4c;
 }
 
+.btn_logout{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
 form{
     text-align: right;
 }
