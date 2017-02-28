@@ -133,4 +133,4 @@ function getData(){
 }
 
     
- //getData();
+ getData();
