@@ -2,6 +2,13 @@
 var id_array = [];
 var beer_count_purchase = 2;
 
+    //Drag event
+    function drag(e) {
+        e.dataTransfer.setData("text", e.target.id);
+    }
+
+    
+
     //Checking duplicate entry on the purchase form:
     function checkIfAlreadyPicked(id) {
         for (var i = 0; i < id_array.length; i++) {
@@ -54,7 +61,7 @@ var beer_count_purchase = 2;
     
     function createDiv(id){
     $('#purchase_form').append('' +
-        '<div class="selected_article" id="r'+id+'">' +
+        '<div draggable="true" ondragstart="drag(event)" class="selected_article" id="r'+id+'">' +
             '<input type="hidden" value="'+id+'">' +
         '   <p class="beer_name"> '+ $('#'+id+'').children(':nth(1)').html()+ "</p>" +
         '   <p class="quantity">1</p>' +
