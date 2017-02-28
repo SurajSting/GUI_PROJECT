@@ -1,5 +1,7 @@
 
-var id_array = [];
+var id_array = []; 
+
+
 //When adding a product, the 'total products' div show up. Right now it toggleing.
 $(document).on("click", '.beer_div', function(e){
     
@@ -13,7 +15,7 @@ $(document).on("click", '.beer_div', function(e){
     //$('.right_pane').toggle('slow');
 
     //Checking duplicate entry on the purchase form:
-    function check() {
+    function checkIfAlreadyPicked() {
         for (var i = 0; i < id_array.length; i++) {
             //alert("fu");
             console.log("fu " + id_array[i] + " " + e.currentTarget.id);
@@ -24,25 +26,43 @@ $(document).on("click", '.beer_div', function(e){
         }
         return -1;
     }
+    
+    //CHECK IF THERE ARE ANY BEER LEFT FOR THAT PARTICULAR ARTICLE
+    var beer_left = $('#'+e.currentTarget.id+'').children(':nth(5)').html();
+        
+    if(beer_left >= 1){
+        beer_left--;
+        $('#'+e.currentTarget.id+'').children(':nth(5)').html(beer_left);
+        
+        var counter = checkIfAlreadyPicked();
+        //console.log("counter: " + counter);
 
-    var counter = -1;
-    counter = check();
-    console.log("counter: " + counter);
-
-    if(counter == -1){
-        id_array[id_array.length] = e.currentTarget.id;
-        console.log(id_array);
-        createDiv();
-    }
+        if(counter == -1){
+            id_array[id_array.length] = e.currentTarget.id;
+            console.log(id_array);
+            createDiv();
+        }
+        else
+        {
+            var amount = parseInt($('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html());
+            amount++;
+            $('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html(amount);
+        
+        
+        //$('#'+e.currentTarget.id+'').children(':nth(6)');
+        }
+    } 
     else
     {
-        var value = parseInt($('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html());
+        alert("No more beers for you!");
         
-        value++;
-        
-        $('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html(value);
     }
 
+
+
+    
+    
+    //console.log($('#'+e.currentTarget.id+'').children(':nth(5)').html());
     //console.log($('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html());
 
 
@@ -122,9 +142,10 @@ function getData(){
                         $("#notebook").append("<div class='beer_div' id="+field[j].beer_id+">"+
                             "<label class='nameLabel'>Name: </label>" +
                             "<p class='name'>"+field[j].namn+"</p> " +
-                            "<label class='priceLabel' for='priceVal'>Price: </label><label id='priceVal' class='priceValue'>"+field[j].price+"</label>" +
-                            "<br>" +
-                            "<p class='count' style='display: "+is_hidden+"'>Count: "+field[j].count+"</p>" +
+                            "<label class='priceLabel' for='priceVal"+j+"'>Price: </label>"+            
+                            "<p id='priceVal"+j+"'class='priceValue'>"+field[j].price+"</p>" +
+                            "<label class='countLabel' for='countVal"+j+"' style='display: "+is_hidden+"'>Beers left: </label>"+
+                            "<p class='count' id='countVal' style='display: "+is_hidden+"'>"+field[j].count+"</p>" +
                         " </div>");
                     }
                 }
