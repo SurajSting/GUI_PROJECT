@@ -90,15 +90,24 @@ $(document).on("click", '.beer_div', function(e){
 //DECREMENT BUTTON ON PURCHASE FORM
 $(document).on("click", '.btn_dec', function(e) {
     var div_id = e.currentTarget.parentElement.parentElement.firstChild.attributes[1].value;
-
+    console.log("div_id: " + div_id);
+    
     var right_amount = e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML;
     console.log(right_amount);
 
 
    if(right_amount == 1){
        //deleteDiv(e.currentTarget.parentElement.parentElement);
-       //$('#'+e.currentTarget.parentElement.parentElement.id+'').
-       $('#purchase_form').remove('#'+e.currentTarget.parentElement.parentElement.id+'');
+       $('#'+e.currentTarget.parentElement.parentElement.id+'').remove();
+       
+       //console.log(id_array.inArray(div_id));
+       for(var i = 0; i < id_array.length; i++){
+           if(div_id == id_array[i]){
+               id_array.splice(i, 1);
+           }
+           
+       }
+       //$('#purchase_form').remove('#'+e.currentTarget.parentElement.parentElement.id+'');
    }
    else{
        right_amount--;
