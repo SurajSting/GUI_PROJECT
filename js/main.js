@@ -67,6 +67,40 @@ $(document).on("click", '.beer_div', function(e){
     }
 });
 
+
+$(document).on("click", '.btn_success', function(e){
+    
+    var uName = $('#uName').val();
+    var pWord = $('#pWord').val();
+    var userlist = {};
+    console.log("Name:"+uName+"Word:"+pWord);
+    
+
+    $.getJSON("http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jorass&action=user_get_all", function(result){
+        $.each(result, function(i, field){                 
+            if(i == "payload"){
+                for(var j=0; j < field.length; j++){
+                    userlist[field[j].username] = field[j].password;
+                }
+                if(uName in userlist){
+
+                    if(pWord == userlist[uName]){       
+                        getData();
+                    }else{
+                        alert("Wrong Password!");
+                    }
+                }else{
+                    alert("Wrong Username and Password!");
+                }
+                console.log(userlist);
+               
+            }
+        });
+    });
+
+});
+
+
 function getData(){
 
     $.getJSON("http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jorass&action=inventory_get", function(result){
@@ -99,4 +133,4 @@ function getData(){
 }
 
     
- getData();
+ //getData();
