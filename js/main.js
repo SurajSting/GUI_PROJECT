@@ -117,16 +117,16 @@ $(document).on("click", '.btn_success', function(e){
                     if(pWord == userlist[uName]){       
                         getData();
                         if(userid[uName] == "3"){
-                            alert("Welcome users!");
+                            
                             $("#margin_bottom").hide();
                             $("#welcome").show().append("Users: "+ userfirst[uName]+"!");
 
                         }else if(userid[uName] == "0"){
-                            alert("Welcome Admin!");
+                           
                             $("#margin_bottom").hide();
                             $("#welcome").show().append("Administrator: "+ userfirst[uName]+"!");
                         }else{
-                            alert("Who are you?");
+                           
                             $("#margin_bottom").hide();
                             $("#welcome").show().append("No one: "+ userfirst[uName]+"!");
                         }
@@ -138,7 +138,7 @@ $(document).on("click", '.btn_success', function(e){
                 }else{
                     alert("Wrong Username and Password!");
                 }
-                console.log(userlist);
+                
                
             }
         });
