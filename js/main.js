@@ -81,6 +81,16 @@ $(document).on("click", '.beer_div', function(e){
 });
 
 
+//DELETE ID FROM THE ID_ARRAY
+function deleteFromIdArray(id){
+    
+        for(var i = 0; i < id_array.length; i++){
+               if(id == id_array[i]){
+                   id_array.splice(i, 1);
+               }
+
+           }
+}
 
 
 
@@ -108,12 +118,8 @@ $(document).on("click", '.btn_dec', function(e) {
        $('#'+e.currentTarget.parentElement.parentElement.id+'').remove();
        
        //DELETE IT FROM THE ID_ARRAY
-       for(var i = 0; i < id_array.length; i++){
-           if(div_id == id_array[i]){
-               id_array.splice(i, 1);
-           }
+       deleteFromIdArray(div_id);
            
-       }
        //$('#purchase_form').remove('#'+e.currentTarget.parentElement.parentElement.id+'');
    }
    else{
@@ -129,6 +135,30 @@ $(document).on("click", '.btn_dec', function(e) {
 });
 
 
+//ON PRESSING THE DELETE BUTTON
+$(document).on("click", '.delete', function(e) {
+    
+    
+    
+    var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
+    var leftDivId = e.currentTarget.parentElement.id.substring(1);
+    
+    var leftPaneBeerAmount = parseInt($('#' + leftDivId + '').children(':nth(5)').html());
+    leftPaneBeerAmount += rightPaneBeerAmount;
+    
+    $('#' + leftDivId + '').children(':nth(5)').html(leftPaneBeerAmount);
+    
+    
+    $('#'+e.currentTarget.parentElement.id+'').remove();
+    
+    deleteFromIdArray(leftDivId);
+    
+    console.log(leftPaneBeerAmount);
+    
+});
+
+
+    
 //USERNAME AND PASSWORD FUNCTIONALITY
 $(document).on("click", '.btn_success', function(e){
     
