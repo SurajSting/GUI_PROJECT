@@ -48,6 +48,7 @@ var beer_count_purchase = 2;
             alert("No more beers for you!");
 
         }
+        upDateTotal();
     
     }
     
@@ -61,8 +62,8 @@ var beer_count_purchase = 2;
         '       <button type="button" class="btn_inc">+</button>' +
         '       <button type="button" class="btn_dec">-</button>' +
         '   </span>' +
-        '   <p class="price">'+ $('#'+id+'').children(':nth(2)').html()+ "</p>" +
         '<button type="button" class="delete">x</button>' +
+                               "<p style='display: none'>"+$('#'+id+'').children(':nth(3)').html()+"</p>"+
         '</div>');
     }
 
@@ -96,17 +97,43 @@ function deleteFromIdArray(id){
 function upDateTotal(){
     
     //for(var i = 0; i < $('#purchase_form').length; i++){
-    console.log($('#purchase_form').);
+    console.log($('#purchase_form').children().length);
+    
+    //console.log
+    var total = 0;
+    
+    for (var i = 0; i < $('#purchase_form').children().length; i++){
+        
+        console.log($('#purchase_form').children(':nth('+i+')'));
+        
+        console.log("quant: " + $('#purchase_form').children(':nth('+i+')').children(':nth(2)').html());
+    
+        console.log("price: " + $('#purchase_form').children(':nth('+i+')').children(':nth(5)').html());
+        
+       var price = parseFloat($('#purchase_form').children(':nth('+i+')').children(':nth(5)').html());
+        
+        var quantity = parseFloat($('#purchase_form').children(':nth('+i+')').children(':nth(2)').html());
+        
+        total += (price * quantity);
+        
+        console.log(total);
+        
+        $('#total').html(total);
+        
+        
+    }
     //for (var i = 0; i < 
     //}
+    //loop through purchase form
+    //extract lastChild from every child + multiply it with quantity/rightAmount
     
 }
 
 //WHEN PRESSING THE INCREMENT BUTTON ON PURCHASE FORM
 $(document).on("click", '.btn_inc', function(e){
     
-        upDateTotal();
-    //beerRightPaneIncrement(e.currentTarget.parentElement.parentElement.id.substring(1));
+    beerRightPaneIncrement(e.currentTarget.parentElement.parentElement.id.substring(1));
+    
     
     //console.log(e.currentTarget.parentElement.parentElement.id.substring(1));
 });
@@ -140,6 +167,8 @@ $(document).on("click", '.btn_dec', function(e) {
     left_amount++;
 
     $('#'+ div_id+'').children(':nth(5)').html(left_amount);
+    
+    upDateTotal();
 
 });
 
@@ -163,6 +192,8 @@ $(document).on("click", '.delete', function(e) {
     deleteFromIdArray(leftDivId);
     
     console.log(leftPaneBeerAmount);
+    
+    upDateTotal();
     
 });
 
