@@ -15,29 +15,43 @@ $(document).on("click", '.beer_div', function(e){
     //Checking duplicate entry on the purchase form:
     function check() {
         for (var i = 0; i < id_array.length; i++) {
-            if (id_array[i] == e.currentTarget.id)
+            //alert("fu");
+            console.log("fu " + id_array[i] + " " + e.currentTarget.id);
+            if (id_array[i] == parseInt(e.currentTarget.id)){
+                console.log("TRUUUEE " + i);
                 return i;
+            }
         }
-        return 0;
+        return -1;
     }
 
-    var counter = check();
+    var counter = -1;
+    counter = check();
+    console.log("counter: " + counter);
 
-    if(counter == 0){
+    if(counter == -1){
         id_array[id_array.length] = e.currentTarget.id;
         console.log(id_array);
+        createDiv();
     }
     else
     {
-        $('#purchase_form').children(':nth('+counter+')').children(':nth(2)');
+        var value = parseInt($('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html());
+        
+        value++;
+        
+        $('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html(value);
     }
 
-    console.log($('#purchase_form').children(':nth('+counter+')').children(':nth(2)'));
+    //console.log($('#purchase_form').children(':nth('+counter+')').children(':nth(2)').html());
 
 
 
     //Putting Data into the onClick div
-    console.log($('#'+e.currentTarget.id+'').children(':nth(2)').html());
+  //  console.log($('#'+e.currentTarget.id+'').children(':nth(2)').html());
+    
+    
+    function createDiv(){
     $('#purchase_form').append('' +
         '<div class="selected_article">' +
             '<input type="hidden" value="'+e.currentTarget.id+'">' +
@@ -50,6 +64,7 @@ $(document).on("click", '.beer_div', function(e){
         '   <p class="price">'+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>" +
         '<button class="delete">x</button>' +
         '</div>>');
+    }
 });
 
 function getData(){
