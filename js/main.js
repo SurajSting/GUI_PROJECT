@@ -70,7 +70,7 @@ $(document).on("click", '.beer_div', function(e){
     
     function createDiv(){
     $('#purchase_form').append('' +
-        '<div class="selected_article">' +
+        '<div class="selected_article" id="r'+e.currentTarget.id+'">' +
             '<input type="hidden" value="'+e.currentTarget.id+'">' +
         '   <p class="beer_name"> '+ $('#'+e.currentTarget.id+'').children(':nth(1)').html()+ "</p>" +
         '   <p class="quantity">1</p>' +
@@ -80,9 +80,12 @@ $(document).on("click", '.beer_div', function(e){
         '   </span>' +
         '   <p class="price">'+ $('#'+e.currentTarget.id+'').children(':nth(2)').html()+ "</p>" +
         '<button type="button" class="delete">x</button>' +
-        '</div>>');
+        '</div>');
     }
 });
+    function deleteDiv(id) {
+
+    }
 
 //DECREMENT BUTTON ON PURCHASE FORM
 $(document).on("click", '.btn_dec', function(e) {
@@ -90,14 +93,22 @@ $(document).on("click", '.btn_dec', function(e) {
 
     var right_amount = e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML;
     console.log(right_amount);
-    right_amount--;
-    e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML = right_amount;
 
 
-    var new_value = $('#'+ div_id+'').children(':nth(5)').html();
-    new_value++;
+   if(right_amount == 1){
+       //deleteDiv(e.currentTarget.parentElement.parentElement);
+       //$('#'+e.currentTarget.parentElement.parentElement.id+'').
+       $('#purchase_form').remove('#'+e.currentTarget.parentElement.parentElement.id+'');
+   }
+   else{
+       right_amount--;
+       e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML = right_amount;
+   }
 
-    $('#'+ div_id+'').children(':nth(5)').html(new_value);
+    var left_amount = $('#'+ div_id+'').children(':nth(5)').html();
+    left_amount++;
+
+    $('#'+ div_id+'').children(':nth(5)').html(left_amount);
 
 });
 
