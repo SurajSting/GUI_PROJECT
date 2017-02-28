@@ -25,6 +25,7 @@
         <li><a href="#about">About</a></li>
     </ul>
 </header>-->
+
 <div class="header shadow">
     <div class="content content_width float_left">
         <h2>Welcome to Mos Eisly Cantina.</h2>
@@ -66,7 +67,9 @@
 </div>
 
 <!-- Add your site or application content here -->
+    <div id="block" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 <div class="page-wrap">
+    
     <div class="content content_width left_pane float_left well shadow">
         <div id="notebook">
         
@@ -80,7 +83,7 @@
     <div class="content content_width right_pane float_right well shadow">
 <p> Selected articles:</p>
                 <div id="div_selected_articles">
-                    <form id="purchase_form" action="">
+                    <form id="purchase_form" action="" ondragover="allowDrop(event)" ondrop="cancelDrop(event)">
 
 
                     </form>

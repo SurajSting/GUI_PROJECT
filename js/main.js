@@ -4,9 +4,52 @@ var beer_count_purchase = 2;
 
     //Drag event
     function drag(e) {
+        
         e.dataTransfer.setData("text", e.target.id);
+        console.log(e);
+        setTimeout(function(){
+        $('#block').css("display", "initial");
+            $('#purchase_form').css("z-index", "5000");
+        }, 50);
     }
 
+function drop(e){
+    
+    e.preventDefault();
+    var data = e.dataTransfer.getData("text");
+    
+    console.log(data);
+
+    $('#block').css("display", "none");
+    
+    var rightPaneBeerAmount = parseInt($('#'+data+'').children(':nth(2)').html());
+    console.log("right: " + rightPaneBeerAmount);
+     var leftPaneBeerAmount = parseInt($('#' + data.substring(1) + '').children(':nth(5)').html());
+    console.log("left: " + leftPaneBeerAmount);
+    leftPaneBeerAmount += rightPaneBeerAmount;
+    
+    console.log("new left: " + leftPaneBeerAmount);
+    
+    $('#' +data.substring(1)+ '').children(':nth(5)').html(leftPaneBeerAmount);
+        $('#'+data+'').remove();
+    deleteFromIdArray(data.substring(1));
+    upDateTotal();
+    //deleteEntry(e);
+    
+    
+}
+
+function allowDrop(e){
+
+    e.preventDefault();
+    
+}
+
+function cancelDrop(event){
+    
+    $('#block').css("display", "none");
+}
+    
     
 
     //Checking duplicate entry on the purchase form:
@@ -169,13 +212,32 @@ $(document).on("click", '.btn_dec', function(e) {
 
 });
 
+//NEVER USED, DELETE THIS ENTRY... KEEPING IT FOR NOW
+function deleteEntry(e){
+ 
+    
+        var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
+    var leftDivId = e.currentTarget.parentElement.id.substring(1);
+    
+    var leftPaneBeerAmount = parseInt($('#' + leftDivId + '').children(':nth(5)').html());
+    leftPaneBeerAmount += rightPaneBeerAmount;
+    
+    $('#' + leftDivId + '').children(':nth(5)').html(leftPaneBeerAmount);
+    
+    
+    $('#'+e.currentTarget.parentElement.id+'').remove();
+    
+    deleteFromIdArray(leftDivId);
+    
+    console.log(leftPaneBeerAmount);
+    
+    upDateTotal();
+}
 
 //ON PRESSING THE DELETE BUTTON
 $(document).on("click", '.delete', function(e) {
     
-    
-    
-    var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
+            var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
     var leftDivId = e.currentTarget.parentElement.id.substring(1);
     
     var leftPaneBeerAmount = parseInt($('#' + leftDivId + '').children(':nth(5)').html());
