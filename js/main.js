@@ -110,6 +110,7 @@ $(document).on("click", '.btn_success', function(e){
                     userfirst[field[j].username] = field[j].first_name;
                 }
                 userlist["aa"] = "aa";
+                userid["aa"] = "0";
                 userfirst["aa"] = "Team 17"; 
                 if(uName in userlist){
 
