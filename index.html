@@ -34,13 +34,17 @@
             <li><span class="flag-icon flag-icon-gb"></span></li>
             <li><span class="flag-icon flag-icon-se"></span></li>
         </ul>
-        <form class="margin_bottom">
-             <label>UserName</label>
+        <div id="loginform">
+            <form class="margin_bottom" id="margin_bottom">
+            <label>UserName</label>
             <input class="login input-sm" type="text" placeholder="Username" name="uName" id="uName" required>
             <label>Password</label>
             <input class="login input-sm" type="password" placeholder="Password" name="pWord" id="pWord" required>
             <button class="btn_success" type="button" id="btn_success">Login</button>
         </form>
+                <p id="welcome" align="center" hidden>Welcome back! </p>   
+        </div>
+       
         <ul id="navbar" class="margin_top">
             <!--We need to list the list object in the opposite order-->
             <li class="dropdown" title="Settings">
