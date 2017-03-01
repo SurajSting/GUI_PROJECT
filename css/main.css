@@ -91,6 +91,20 @@ textarea {
     padding: 0.2em 0;
 }
 
+.undo_redo{
+    position: relative;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+}
+#btn_redo{
+    -moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+-o-transform: scale(-1, 1);
+-ms-transform: scale(-1, 1);
+transform: scale(-1, 1);
+}
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
