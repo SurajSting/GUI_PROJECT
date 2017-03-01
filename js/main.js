@@ -33,7 +33,7 @@ function drop(e){
     $('#' +data.substring(1)+ '').children(':nth(5)').html(leftPaneBeerAmount);
         $('#'+data+'').remove();
     deleteFromIdArray(data.substring(1));
-    upDateTotal();
+    upDateTotalCost();
     //deleteEntry(e);
     
     
@@ -67,23 +67,23 @@ function cancelDrop(event){
     
     //CHECK IF THERE ARE ANY BEER LEFT FOR THAT PARTICULAR ARTICLE
     
-    function beerRightPaneIncrement(id){
+    function beerCountRightPaneIncrement(id){
         
         var beer_left = $('#'+id+'').children(':nth(5)').html(); //leftpane beer-count-variable
 
-        if(beer_left >= 1){
+        if(beer_left >= 1){ //If there's any beer left
             beer_left--;
             $('#'+id+'').children(':nth(5)').html(beer_left);
 
-            var rightPaneBeerIndex = checkIfAlreadyPicked(id); 
+            var rightPaneBeerIndex = checkIfAlreadyPicked(id);
             //console.log("counter: " + counter);
 
-            if(rightPaneBeerIndex == -1){ //IF THE BEER HAS NOT BEEN CHOSEN
-                id_array[id_array.length] = id;
-                //console.log(id_array);
+            if(rightPaneBeerIndex == -1){ //If the beer has not already been chosen
+                id_array[id_array.length] = id; //Add it to our internal array of selected articles
+                
                 createDiv(id);
             }
-            else
+            else 
             {
                 var amount = parseInt($('#purchase_form').children(':nth('+rightPaneBeerIndex+')').children(':nth(2)').html());
                 amount++;
@@ -98,7 +98,7 @@ function cancelDrop(event){
             alert("No more beers for you!");
 
         }
-        upDateTotal();
+        upDateTotalCost();
     
     }
     
@@ -127,7 +127,7 @@ $(document).on("click", '.beer_div', function(e){
         //$('.left_pane').animate({"width": '+=33%'}, 500);
     }
     
-    beerRightPaneIncrement(e.currentTarget.id);
+    beerCountRightPaneIncrement(e.currentTarget.id);
 
 });
 
@@ -152,7 +152,7 @@ function deleteFromIdArray(id){
 
 
 //ADDS UP ALL PURCHASES IN THE PURCHASE_FORM AND DISPLAYS IT IN TOTAL
-function upDateTotal(){
+function upDateTotalCost(){
     
     var total = 0;
     
@@ -172,7 +172,7 @@ function upDateTotal(){
 //WHEN PRESSING THE INCREMENT BUTTON ON PURCHASE FORM
 $(document).on("click", '.btn_inc', function(e){
     
-    beerRightPaneIncrement(e.currentTarget.parentElement.parentElement.id.substring(1));
+    beerCountRightPaneIncrement(e.currentTarget.parentElement.parentElement.id.substring(1));
     
     
     //console.log(e.currentTarget.parentElement.parentElement.id.substring(1));
@@ -207,8 +207,8 @@ $(document).on("click", '.btn_dec', function(e) {
     left_amount++;
 
     $('#'+ div_id+'').children(':nth(5)').html(left_amount);
-    
-    upDateTotal();
+   
+    upDateTotalCost();
 
 });
 
@@ -231,7 +231,7 @@ function deleteEntry(e){
     
     console.log(leftPaneBeerAmount);
     
-    upDateTotal();
+    upDateTotalCost();
 }
 
 //ON PRESSING THE DELETE BUTTON
@@ -252,7 +252,7 @@ $(document).on("click", '.delete', function(e) {
     
     console.log(leftPaneBeerAmount);
     
-    upDateTotal();
+    upDateTotalCost();
     
 });
 
