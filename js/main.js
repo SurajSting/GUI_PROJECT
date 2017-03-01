@@ -173,6 +173,7 @@ $(document).on("click", '.beer_div', function(e){
     beerCountRightPaneIncrement(e.currentTarget.id);
     undoStorage.push([e.currentTarget.id, 'inc']);
     
+    redoStorage = [];
     for(var i = 0; i < undoStorage.length; i++){
         
         console.log("after: " + undoStorage[i]);
@@ -224,6 +225,7 @@ $(document).on("click", '.btn_inc', function(e){
     
     var id = e.currentTarget.parentElement.parentElement.id.substring(1);
     beerCountRightPaneIncrement(id);
+    redoStorage = [];
     undoStorage.push([id, 'inc']);
     console.log(undoStorage[undoStorage.length-1]);
     
@@ -273,6 +275,7 @@ $(document).on("click", '.btn_dec', function(e) {
     
     var div_id = e.currentTarget.parentElement.parentElement.firstChild.attributes[1].value;
     beerCountRightPaneDecrement(div_id);
+    redoStorage = [];
     undoStorage.push([div_id, 'dec']);
 
 });

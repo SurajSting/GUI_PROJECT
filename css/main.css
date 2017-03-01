@@ -281,6 +281,13 @@ ul{
 }
 
 
+#div_buy{
+    
+        position: relative;
+    bottom: -21px;
+    z-index: -10;
+    
+}
 
 .right_pane{
     position: fixed;
@@ -290,6 +297,8 @@ ul{
     width: 30%;
     margin-left: 10px;
     z-index: 20;
+    min-height: 164px;
+        max-height: 400px;
 }
 
 .float_right{
@@ -297,7 +306,6 @@ ul{
 }
 
 .well {
-    min-height: 20px;
     padding: 15px;
     margin-bottom: 20px;
     background-color: #f5f5f5;
@@ -565,26 +573,47 @@ label{
     border: 1px dashed;
 }
 
-
-#div_buy{
-    position: absolute;
+#label_total{
+    
+    position: relative;
+    left: 37%;
+    top: 27px;
     
 }
 
+.beer_name{
+    
+    position: relative;
+    float: left;
+    top: 21px;
+    
+}
+#total{
+ 
+        left: 52%;
+    position: relative;
+}
 #btn_purchase{
-     position: relative;
-
+    position: relative;
+    float: right;
+    bottom: 32px;
 }
 #purchase_form{
     z-index: 500;
+    max-height: 400px;
 }
 .selected_article{
     
-    height: 34px;
+height: 66px;
     border: dashed 1px;
     float: left;
     width: 100%;
     
+}
+
+#div_selected_articles{
+    
+    max-height: 400px;
 }
 .drink_type_name{
     float: left;
@@ -604,13 +633,28 @@ label{
     
 }
 .quantity{
-    float: left;
+    right: 36%;
+    top: 21px;
     position: relative;
 
+}
+
+.btn_inc{
+    
+    position: relative;
+    top: -22px;
+    
+}
+.btn_dec{
+    
+        position: relative;
+    left: -7%;
+    top: 9px;
 }
 .increment{
 
     position: relative;
+    left: -8%;
     
 }
 .price{
@@ -618,7 +662,7 @@ label{
 }
 .delete{
     position: relative;
-
+    right: 6%;
     background: #ccd1d4;
     background-image: -webkit-linear-gradient(top, #ccd1d4, #74858f);
     background-image: -moz-linear-gradient(top, #ccd1d4, #74858f);
