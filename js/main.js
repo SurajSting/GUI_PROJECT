@@ -1,3 +1,34 @@
+var lastKey;
+
+
+
+/*
+0 22259, increment
+1 2259, increment
+2 2259, decrement
+3 2259, 1
+4
+5
+6
+7
+
+
+*/
+var undoStorage = [];
+var redoStorage = [];
+
+
+
+
+
+console.log(localStorage.key([localStorage.length-1]));
+console.log(localStorage.getItem(2216));
+
+localStorage.removeItem('increment');
+
+//console.log(localStorage.getl
+
+
 
 var id_array = [];
 var beer_count_purchase = 2;
@@ -12,6 +43,7 @@ var beer_count_purchase = 2;
             $('#purchase_form').css("z-index", "5000");
         }, 50);
     }
+
 
 function drop(e){
     
@@ -69,6 +101,16 @@ function cancelDrop(event){
     
     function beerCountRightPaneIncrement(id){
         
+        
+        if($('.right_pane').css("display") == ("none")){ //if the right pane is not visible, show it
+            //console.log("I'll be damned!");
+            $('.right_pane').slideDown();
+            $('.left_pane').animate({"width": '-=33%'}, 500);
+        } else {
+           // console.log("bullshit!");
+            //$('.left_pane').animate({"width": '+=33%'}, 500);
+        }
+        
         var beer_left = $('#'+id+'').children(':nth(5)').html(); //leftpane beer-count-variable
 
         if(beer_left >= 1){ //If there's any beer left
@@ -98,6 +140,7 @@ function cancelDrop(event){
             alert("No more beers for you!");
 
         }
+        
         upDateTotalCost();
     
     }
@@ -120,14 +163,21 @@ function cancelDrop(event){
 //When adding a product, the 'total products' div show up. Right now it toggleing.
 $(document).on("click", '.beer_div', function(e){
     
-    if($('.right_pane').css("display") == ("none")){
+    /*if($('.right_pane').css("display") == ("none")){
         $('.right_pane').slideDown();
         $('.left_pane').animate({"width": '-=33%'}, 500);
     } else {
         //$('.left_pane').animate({"width": '+=33%'}, 500);
-    }
+    }*/
     
     beerCountRightPaneIncrement(e.currentTarget.id);
+    undoStorage.push([e.currentTarget.id, 'inc']);
+    
+    for(var i = 0; i < undoStorage.length; i++){
+        
+        console.log("after: " + undoStorage[i]);
+        
+    }
 
 });
 
@@ -172,35 +222,41 @@ function upDateTotalCost(){
 //WHEN PRESSING THE INCREMENT BUTTON ON PURCHASE FORM
 $(document).on("click", '.btn_inc', function(e){
     
-    beerCountRightPaneIncrement(e.currentTarget.parentElement.parentElement.id.substring(1));
+    var id = e.currentTarget.parentElement.parentElement.id.substring(1);
+    beerCountRightPaneIncrement(id);
+    undoStorage.push([id, 'inc']);
+    console.log(undoStorage[undoStorage.length-1]);
     
     
     //console.log(e.currentTarget.parentElement.parentElement.id.substring(1));
 });
 
-
-//WHEN PRESSING THE DECREMENT BUTTON ON PURCHASE FORM
-$(document).on("click", '.btn_dec', function(e) {
-    var div_id = e.currentTarget.parentElement.parentElement.firstChild.attributes[1].value;
+function beerCountRightPaneDecrement(id){
+    
+    
+    var div_id = id;
     console.log("div_id: " + div_id);
     
-    var right_amount = e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML;
-    console.log(right_amount);
+    //var right_amount = e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML;
+    
+    var right_amount = $('#r'+div_id+'').children(':nth(2)').html();
+    console.log("right_amount: " + right_amount);
 
 
     //IF THERE'S ONLY ONE LEFT, THEN DELETE THE WHOLE ENTRY
    if(right_amount == 1){
-       //deleteDiv(e.currentTarget.parentElement.parentElement);
-       $('#'+e.currentTarget.parentElement.parentElement.id+'').remove();
+      
+       $('#r'+div_id+'').remove();
        
        //DELETE IT FROM THE ID_ARRAY
        deleteFromIdArray(div_id);
            
-       //$('#purchase_form').remove('#'+e.currentTarget.parentElement.parentElement.id+'');
+       $('#purchase_form').remove('#r'+div_id+'');
    }
    else{
        right_amount--;
-       e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML = right_amount;
+       //e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML = right_amount;
+       $('#r'+div_id+'').children(':nth(2)').html(right_amount);
    }
 
     var left_amount = $('#'+ div_id+'').children(':nth(5)').html();
@@ -209,11 +265,20 @@ $(document).on("click", '.btn_dec', function(e) {
     $('#'+ div_id+'').children(':nth(5)').html(left_amount);
    
     upDateTotalCost();
+    
+}
+
+//WHEN PRESSING THE DECREMENT BUTTON ON PURCHASE FORM
+$(document).on("click", '.btn_dec', function(e) {
+    
+    var div_id = e.currentTarget.parentElement.parentElement.firstChild.attributes[1].value;
+    beerCountRightPaneDecrement(div_id);
+    undoStorage.push([div_id, 'dec']);
 
 });
 
 //NEVER USED, DELETE THIS ENTRY... KEEPING IT FOR NOW
-function deleteEntry(e){
+/*function deleteEntry(e){
  
     
         var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
@@ -233,11 +298,11 @@ function deleteEntry(e){
     
     upDateTotalCost();
 }
-
+*/
 //ON PRESSING THE DELETE BUTTON
 $(document).on("click", '.delete', function(e) {
     
-            var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
+    var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
     var leftDivId = e.currentTarget.parentElement.id.substring(1);
     
     var leftPaneBeerAmount = parseInt($('#' + leftDivId + '').children(':nth(5)').html());
@@ -248,14 +313,93 @@ $(document).on("click", '.delete', function(e) {
     
     $('#'+e.currentTarget.parentElement.id+'').remove();
     
+                         
     deleteFromIdArray(leftDivId);
     
     console.log(leftPaneBeerAmount);
     
     upDateTotalCost();
     
+    
 });
 
+
+
+
+$(document).on("click", '#btn_undo', function(e){
+    
+    for(var i = 0; i < undoStorage.length; i++){
+        
+        console.log("before: " + undoStorage[i]);
+        
+    }
+    var undoThis = undoStorage[undoStorage.length-1];
+    console.log(undoThis[1]);
+    
+    var id = undoThis[0];
+    console.log("index: " + id);
+    var action = undoThis[1];
+    
+    if(action == "inc"){
+        
+        beerCountRightPaneDecrement(id);
+        
+    } else if(action == "dec"){
+        beerCountRightPaneIncrement(id);
+        
+    } /*else{
+        
+        deleteEntry(id)
+    }*/
+    
+    redoStorage.push(undoThis);
+    undoStorage.pop();
+    
+    for(var i = 0; i < undoStorage.length; i++){
+        
+        console.log("after: " + undoStorage[i][0]);
+        
+        //beerCountRightPaneIncrement(
+        
+    }
+    
+});
+
+$(document).on("click", '#btn_redo', function(e){
+    
+    var redoThis = redoStorage[redoStorage.length-1];
+    
+    
+    var id = redoStorage[redoStorage.length-1][0];
+    var action = redoStorage[redoStorage.length-1][1];
+    
+    console.log(action);
+    
+    if(action == 'inc'){
+        console.log("inside");
+        beerCountRightPaneIncrement(id);
+        
+    } else if (action == 'dec'){
+        
+        console.log("inside DEEEEEC");
+        beerCountRightPaneDecrement(id);
+        
+    }
+    
+    undoStorage.push([parseInt(id), action]);
+    console.log("last in undoStorage: " + undoStorage[undoStorage.length-1]);
+    redoStorage.pop();
+    
+    
+});
+
+//WHEN CLICKING PURCHASE BUTTON
+$(document).on("click", '#btn_purchase', function(e){
+    
+    
+    
+    
+});
 
     
 //USERNAME AND PASSWORD FUNCTIONALITY
