@@ -91,7 +91,7 @@ function cancelDrop(event){
             console.log("fu " + id_array[i] + " " + id);
             if (id_array[i] == parseInt(id)){
                 console.log("TRUUUEE " + i);
-                return i;
+                return i + 1; //+1 because we've implemented a dummy-div in purchase_form
             }
         }
         return -1;
@@ -115,7 +115,7 @@ function cancelDrop(event){
 
         if(beer_left >= 1){ //If there's any beer left
             beer_left--;
-            $('#'+id+'').children(':nth(5)').html(beer_left);
+            $('#'+id+'').children(':nth(5)').html(beer_left); //decrement leftpane beer count
 
             var rightPaneBeerIndex = checkIfAlreadyPicked(id);
             //console.log("counter: " + counter);
@@ -123,9 +123,10 @@ function cancelDrop(event){
             if(rightPaneBeerIndex == -1){ //If the beer has not already been chosen
                 id_array[id_array.length] = id; //Add it to our internal array of selected articles
                 
-                createDiv(id);
+                createDiv(id, 1, (id_array.length));
+                console.log(id_array.length);
             }
-            else 
+            else //increment on rightpane beer count
             {
                 var amount = parseInt($('#purchase_form').children(':nth('+rightPaneBeerIndex+')').children(':nth(2)').html());
                 amount++;
@@ -145,19 +146,24 @@ function cancelDrop(event){
     
     }
     
-    function createDiv(id){
-    $('#purchase_form').append('' +
+    function createDiv(id, quantity, index){
+       //
+        var insertThis;
+      //  if(index == 0){
+            
+       // }
+    $('#purchase_form div.selected_article:nth-child('+index+')').after($('' +
         '<div draggable="true" ondragstart="drag(event)" class="selected_article" id="r'+id+'">' +
             '<input type="hidden" value="'+id+'">' +
         '   <p class="beer_name"> '+ $('#'+id+'').children(':nth(1)').html()+ "</p>" +
-        '   <p class="quantity">1</p>' +
+        '   <p class="quantity">'+quantity+'</p>' +
         '   <span class="increment">' +
         '       <button type="button" class="btn_inc">+</button>' +
         '       <button type="button" class="btn_dec">-</button>' +
         '   </span>' +
         '<button type="button" class="delete">x</button>' +
                                "<p style='display: none'>"+$('#'+id+'').children(':nth(3)').html()+"</p>"+
-        '</div>');
+        '</div>'));
     }
 
 //When adding a product, the 'total products' div show up. Right now it toggleing.
@@ -281,11 +287,13 @@ $(document).on("click", '.btn_dec', function(e) {
 });
 
 //NEVER USED, DELETE THIS ENTRY... KEEPING IT FOR NOW
-/*function deleteEntry(e){
+function deleteEntry(id){
  
     
-        var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
-    var leftDivId = e.currentTarget.parentElement.id.substring(1);
+    var rightPaneBeerAmount = parseInt($('#r' +id+'').children(':nth(2)').html());
+    console.log("rightpanebeeramount: " + rightPaneBeerAmount);
+    
+    var leftDivId = id;
     
     var leftPaneBeerAmount = parseInt($('#' + leftDivId + '').children(':nth(5)').html());
     leftPaneBeerAmount += rightPaneBeerAmount;
@@ -293,22 +301,26 @@ $(document).on("click", '.btn_dec', function(e) {
     $('#' + leftDivId + '').children(':nth(5)').html(leftPaneBeerAmount);
     
     
-    $('#'+e.currentTarget.parentElement.id+'').remove();
+    $('#r'+id+'').remove();
     
+    var position = id_array.indexOf(leftDivId);
     deleteFromIdArray(leftDivId);
     
+    undoStorage.push([leftDivId, rightPaneBeerAmount, position]);
     console.log(leftPaneBeerAmount);
     
     upDateTotalCost();
 }
-*/
+
 //ON PRESSING THE DELETE BUTTON
 $(document).on("click", '.delete', function(e) {
     
-    var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
+   // var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
     var leftDivId = e.currentTarget.parentElement.id.substring(1);
     
-    var leftPaneBeerAmount = parseInt($('#' + leftDivId + '').children(':nth(5)').html());
+    deleteEntry(leftDivId);
+    
+   /* var leftPaneBeerAmount = parseInt($('#' + leftDivId + '').children(':nth(5)').html());
     leftPaneBeerAmount += rightPaneBeerAmount;
     
     $('#' + leftDivId + '').children(':nth(5)').html(leftPaneBeerAmount);
@@ -316,12 +328,18 @@ $(document).on("click", '.delete', function(e) {
     
     $('#'+e.currentTarget.parentElement.id+'').remove();
     
+    //console.log("THIS IS THE INDEEEEEX: " + id_array.indexOf(leftDivId));
+    
+    var position = id_array.indexOf(leftDivId);
                          
     deleteFromIdArray(leftDivId);
     
     console.log(leftPaneBeerAmount);
     
-    upDateTotalCost();
+
+    undoStorage.push([leftDivId, rightPaneBeerAmount, position]);
+    
+    upDateTotalCost();*/
     
     
 });
@@ -350,10 +368,30 @@ $(document).on("click", '#btn_undo', function(e){
     } else if(action == "dec"){
         beerCountRightPaneIncrement(id);
         
-    } /*else{
+    } else{
         
-        deleteEntry(id)
-    }*/
+        console.log("YEEEAAAAH");
+        var quantity = undoStorage[undoStorage.length-1][1];
+        var index = undoStorage[undoStorage.length-1][2] + 1; //+1 because the dummy-div works...
+        
+        console.log("LENGTH: " + id_array.length);
+        console.log("quant: " + quantity + " index: " + index);
+        for (var i = 0; i < id_array.length; i++){
+            console.log("CMON: " + id_array[i]);
+        }
+        console.log("UNDEFINED?? " + id_array[index-1]);
+        if(id_array[index] == undefined){
+            id_array[index] = id;
+            console.log("WHAT THE: " + id_array[index]);
+        } else{
+            id_array.splice(parseInt(index-1), id);
+        }
+        console.log("UNDEFINED?? " + id_array[index-1]);
+        createDiv(id, quantity, index);
+        
+        
+        
+    }
     
     redoStorage.push(undoThis);
     undoStorage.pop();
