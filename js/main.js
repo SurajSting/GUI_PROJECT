@@ -41,24 +41,27 @@ function drop(e){
     e.preventDefault();
     var data = e.dataTransfer.getData("text");
     
+    var id = $('#'+data.substring(1)+'');
+    
     console.log(data);
 
     $('#block').css("display", "none");
     
-    var rightPaneBeerAmount = parseInt($('#'+data+'').children(':nth(2)').html());
-    console.log("right: " + rightPaneBeerAmount);
-     var leftPaneBeerAmount = parseInt($('#' + data.substring(1) + '').children(':nth(5)').html());
-    console.log("left: " + leftPaneBeerAmount);
-    leftPaneBeerAmount += rightPaneBeerAmount;
+   // var rightPaneBeerAmount = parseInt($('#'+data+'').children(':nth(2)').html());
+    //console.log("right: " + rightPaneBeerAmount);
+     //var leftPaneBeerAmount = parseInt($('#' + data.substring(1) + '').children(':nth(5)').html());
+    //console.log("left: " + leftPaneBeerAmount);
+    //leftPaneBeerAmount += rightPaneBeerAmount;
     
-    console.log("new left: " + leftPaneBeerAmount);
+   // console.log("new left: " + leftPaneBeerAmount);
     
-    $('#' +data.substring(1)+ '').children(':nth(5)').html(leftPaneBeerAmount);
-        $('#'+data+'').remove();
+   // $('#' +data.substring(1) +'').children(':nth(5)').html(leftPaneBeerAmount);
+    //$('#'+data+'').remove();
+    deleteEntry(data.substring(1));
     deleteFromIdArray(data.substring(1));
-    upDateTotalCost();
+   // upDateTotalCost();
     //deleteEntry(e);
-    
+
     
 }
 
@@ -169,6 +172,9 @@ function cancelDrop(event){
         
         var bajs = index -2;
         console.log("bajs: " + bajs);
+        
+        
+        
         if ($('#purchase_form').has("div").length > 0){
             if(bajs == -1 || bajs == -2){
                 $('#purchase_form div.selected_article').eq(0).before($(appendThis));
@@ -307,9 +313,20 @@ function beerCountRightPaneDecrement(id){
 $(document).on("click", '.btn_dec', function(e) {
     
     var div_id = e.currentTarget.parentElement.parentElement.firstChild.attributes[1].value;
+    var rightBeerAmount = $('#r'+div_id+'').children(':nth(2)').html();
+    var position = id_array.indexOf(div_id)
     beerCountRightPaneDecrement(div_id);
     redoStorage = [];
-    undoStorage.push([div_id, 'dec']);
+    
+    
+    //console.log("rightbeer: + !!!!!!" + rightBeerAmount);
+    if(rightBeerAmount == 1){
+       // console.log("inside if");
+        undoStorage.push([div_id, 1, position]);
+    }
+    else{
+        undoStorage.push([div_id, 'dec']);
+    }
 
 });
 
