@@ -21,20 +21,11 @@ var redoStorage = [];
 
 
 
-console.log(localStorage.key([localStorage.length-1]));
-console.log(localStorage.getItem(2216));
-
-localStorage.removeItem('increment');
-
-//console.log(localStorage.getl
-
-
-
 var id_array = [];
 var beer_count_purchase = 2;
 
     //Drag event
-    function drag(e) {
+function drag(e) {
         
         e.dataTransfer.setData("text", e.target.id);
         console.log(e);
@@ -91,7 +82,7 @@ function cancelDrop(event){
             console.log("fu " + id_array[i] + " " + id);
             if (id_array[i] == parseInt(id)){
                 console.log("TRUUUEE " + i);
-                return i + 1; //+1 because we've implemented a dummy-div in purchase_form
+                return i; //+1 because we've implemented a dummy-div in purchase_form
             }
         }
         return -1;
@@ -118,17 +109,20 @@ function cancelDrop(event){
             $('#'+id+'').children(':nth(5)').html(beer_left); //decrement leftpane beer count
 
             var rightPaneBeerIndex = checkIfAlreadyPicked(id);
+            console.log("rightPaneBeerIndex: " + rightPaneBeerIndex);
             //console.log("counter: " + counter);
 
             if(rightPaneBeerIndex == -1){ //If the beer has not already been chosen
                 id_array[id_array.length] = id; //Add it to our internal array of selected articles
                 
                 createDiv(id, 1, (id_array.length));
-                console.log(id_array.length);
+                console.log("id_array.length: " + id_array.length);
             }
             else //increment on rightpane beer count
             {
                 var amount = parseInt($('#purchase_form').children(':nth('+rightPaneBeerIndex+')').children(':nth(2)').html());
+                //console.log("Target: " + $('#purchase_form').children(':nth(0)').children(':nth(2)').html());
+                //console.log("AMOUNT = " + amount);
                 amount++;
                 $('#purchase_form').children(':nth('+rightPaneBeerIndex+')').children(':nth(2)').html(amount);
 
@@ -148,11 +142,49 @@ function cancelDrop(event){
     
     function createDiv(id, quantity, index){
        //
-        var insertThis;
-      //  if(index == 0){
+        if($('.right_pane').css("display") == ("none")){ //if the right pane is not visible, show it
+            //console.log("I'll be damned!");
+            $('.right_pane').slideDown();
+            $('.left_pane').animate({"width": '-=33%'}, 500);
+        }
+    
+        console.log("Inside the creation");
+      // $('#purchase_form div.selected_article:nth-child('+index+')').after($ if(index == 0){
             
        // }
-    $('#purchase_form div.selected_article:nth-child('+index+')').after($('' +
+        
+    var appendThis =         '<div draggable="true" ondragstart="drag(event)" class="selected_article" id="r'+id+'">' +
+            '<input type="hidden" value="'+id+'">' +
+        '   <p class="beer_name"> '+ $('#'+id+'').children(':nth(1)').html()+ "</p>" +
+        '   <p class="quantity">'+quantity+'</p>' +
+        '   <span class="increment">' +
+        '       <button type="button" class="btn_inc">+</button>' +
+        '       <button type="button" class="btn_dec">-</button>' +
+        '   </span>' +
+        '<button type="button" class="delete">x</button>' +
+                               "<p style='display: none'>"+$('#'+id+'').children(':nth(3)').html()+"</p>"+
+        '</div>';  
+        
+        console.log("index: " + index);
+        
+        var bajs = index -2;
+        console.log("bajs: " + bajs);
+        if ($('#purchase_form').has("div").length > 0){
+            if(bajs == -1 || bajs == -2){
+                $('#purchase_form div.selected_article').eq(0).before($(appendThis));
+            }else{
+            $('#purchase_form div.selected_article').eq(bajs).after($(appendThis));
+            //$('#purchase_form div.selected_article')[bajs].after($('<p>suck a cock</p>'));
+            }
+            
+        }
+        else{
+            console.log("inside else");
+            $('#purchase_form').append(appendThis);  
+        }
+        
+    
+   /* $('#purchase_form').append('' +
         '<div draggable="true" ondragstart="drag(event)" class="selected_article" id="r'+id+'">' +
             '<input type="hidden" value="'+id+'">' +
         '   <p class="beer_name"> '+ $('#'+id+'').children(':nth(1)').html()+ "</p>" +
@@ -163,7 +195,7 @@ function cancelDrop(event){
         '   </span>' +
         '<button type="button" class="delete">x</button>' +
                                "<p style='display: none'>"+$('#'+id+'').children(':nth(3)').html()+"</p>"+
-        '</div>'));
+        '</div>');*/
     }
 
 //When adding a product, the 'total products' div show up. Right now it toggleing.
@@ -180,11 +212,6 @@ $(document).on("click", '.beer_div', function(e){
     undoStorage.push([e.currentTarget.id, 'inc']);
     
     redoStorage = [];
-    for(var i = 0; i < undoStorage.length; i++){
-        
-        console.log("after: " + undoStorage[i]);
-        
-    }
 
 });
 
@@ -233,7 +260,7 @@ $(document).on("click", '.btn_inc', function(e){
     beerCountRightPaneIncrement(id);
     redoStorage = [];
     undoStorage.push([id, 'inc']);
-    console.log(undoStorage[undoStorage.length-1]);
+    //console.log(undoStorage[undoStorage.length-1]);
     
     
     //console.log(e.currentTarget.parentElement.parentElement.id.substring(1));
@@ -243,12 +270,12 @@ function beerCountRightPaneDecrement(id){
     
     
     var div_id = id;
-    console.log("div_id: " + div_id);
+    //console.log("div_id: " + div_id);
     
     //var right_amount = e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML;
     
     var right_amount = $('#r'+div_id+'').children(':nth(2)').html();
-    console.log("right_amount: " + right_amount);
+    //console.log("right_amount: " + right_amount);
 
 
     //IF THERE'S ONLY ONE LEFT, THEN DELETE THE WHOLE ENTRY
@@ -349,16 +376,10 @@ $(document).on("click", '.delete', function(e) {
 
 $(document).on("click", '#btn_undo', function(e){
     
-    for(var i = 0; i < undoStorage.length; i++){
-        
-        console.log("before: " + undoStorage[i]);
-        
-    }
+
     var undoThis = undoStorage[undoStorage.length-1];
-    console.log(undoThis[1]);
     
     var id = undoThis[0];
-    console.log("index: " + id);
     var action = undoThis[1];
     
     if(action == "inc"){
@@ -368,25 +389,29 @@ $(document).on("click", '#btn_undo', function(e){
     } else if(action == "dec"){
         beerCountRightPaneIncrement(id);
         
-    } else{
+    } else{ //If there are more values then
         
-        console.log("YEEEAAAAH");
         var quantity = undoStorage[undoStorage.length-1][1];
         var index = undoStorage[undoStorage.length-1][2] + 1; //+1 because the dummy-div works...
         
-        console.log("LENGTH: " + id_array.length);
-        console.log("quant: " + quantity + " index: " + index);
+        console.log("undo-index: " + index);
+   /*   
+   
+   
+        console.log("index = " + index);
+        
         for (var i = 0; i < id_array.length; i++){
             console.log("CMON: " + id_array[i]);
         }
-        console.log("UNDEFINED?? " + id_array[index-1]);
+        console.log("UNDEFINED?? " + id_array[index]);
         if(id_array[index] == undefined){
             id_array[index] = id;
             console.log("WHAT THE: " + id_array[index]);
         } else{
-            id_array.splice(parseInt(index-1), id);
+            id_array.splice(parseInt(index), 0, id);
         }
-        console.log("UNDEFINED?? " + id_array[index-1]);
+        */
+        id_array.splice(index-1, 0, id);
         createDiv(id, quantity, index);
         
         
