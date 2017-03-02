@@ -493,6 +493,23 @@ $(document).on("click", '#btn_purchase', function(e){
     
 });
 
+ $(document).ready( function() {
+
+      
+      $._.setAnchorByClass( 'gettext' );
+
+      
+      $.i18n.setLocale("jp");
+
+      
+      $('.translate').click( function() {
+        $._.setLocale( $(this).text() ) 
+        $._.replaceByLocale( "language/example." + $._.getLocale()  + ".json" );
+      });
+
+});
+
+
     
 //USERNAME AND PASSWORD FUNCTIONALITY
 $(document).on("click", '.btn_success', function(e){
