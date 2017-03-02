@@ -465,15 +465,20 @@ $(document).on("click", '#btn_redo', function(e){
     if(action == 'inc'){
         console.log("inside");
         beerCountRightPaneIncrement(id);
+        undoStorage.push([parseInt(id), action]);
         
     } else if (action == 'dec'){
         
         console.log("inside DEEEEEC");
         beerCountRightPaneDecrement(id);
+        undoStorage.push([parseInt(id), action]);
         
+    } else{
+        console.log("inside deletestuff");
+        deleteEntry(id);
     }
     
-    undoStorage.push([parseInt(id), action]);
+   // undoStorage.push([parseInt(id), action]);
     console.log("last in undoStorage: " + undoStorage[undoStorage.length-1]);
     redoStorage.pop();
     
