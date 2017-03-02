@@ -392,7 +392,10 @@ $(document).on("click", '#btn_undo', function(e){
     } else{ //If there are more values then
         
         var quantity = undoStorage[undoStorage.length-1][1];
-        var index = undoStorage[undoStorage.length-1][2] + 1; //+1 because the dummy-div works...
+        var index = undoStorage[undoStorage.length-1][2];
+        
+        leftPaneBeerQuantity = parseInt($('#' + id +'').children(':nth(5)').html()) - quantity;
+        $('#'+id+'').children(':nth(5)').html(leftPaneBeerQuantity); //setting the right quantity at leftPaneSide.
         
         console.log("undo-index: " + index);
    /*   
@@ -411,8 +414,8 @@ $(document).on("click", '#btn_undo', function(e){
             id_array.splice(parseInt(index), 0, id);
         }
         */
-        id_array.splice(index-1, 0, id);
-        createDiv(id, quantity, index);
+        id_array.splice(index, 0, id);
+        createDiv(id, quantity, index +1 ); //+1 has to do with positioning in the createDiv function
         
         
         
@@ -420,6 +423,7 @@ $(document).on("click", '#btn_undo', function(e){
     
     redoStorage.push(undoThis);
     undoStorage.pop();
+    upDateTotalCost();
     
     for(var i = 0; i < undoStorage.length; i++){
         
