@@ -1,0 +1,14 @@
+$.i18n.zh_TW= { };
+
+jQuery.i18n.zh_TW.strings = {
+    "Example: jquery i18n": "範例：jquery i18n",
+    "Welcome to Mos Eisly Cantina.": "歡迎來到Mos Eisly Cantina",
+    "Login":"登入",
+    "UserName":"使用者名稱",
+    "Password":"密碼",
+    "Welcome back!":"歡迎回來!",
+    "Administrator:":"管理員",
+    "Name:":"名稱",
+    "Price:":"價錢"
+
+};

@@ -1,0 +1,12 @@
+$.i18n.se= { };
+
+jQuery.i18n.se.strings = {
+    
+    "Welcome to Mos Eisly Cantina.": "Välkommen till Mos Eisley Cantina.",
+    "Welcome back!":"Välkommen tillbaka!",
+    "Login":"Logga in",
+    "Log Out":"Logga ut",
+    "UserName":"Användarnamn",
+    "Password":"Lösenord"
+
+};
