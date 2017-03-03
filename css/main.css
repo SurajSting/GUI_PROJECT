@@ -120,6 +120,7 @@ transform: scale(-1, 1);
 }
 html, body {
     height: 100%;
+    background-color: #d2d2d2;
 }
 /*.page-wrap {
     min-height: 100%;
@@ -182,6 +183,15 @@ ul{
     float:right;
 }
 
+#beer_svg{
+    
+    width: 59px;
+    position: absolute;
+    top: -344px;
+    left: 54.5%;
+    transform: rotate(-22deg);
+    
+}
 #navbar li a ,.dropbtn{
     display: block;
     padding: 14px 16px;
@@ -301,9 +311,9 @@ ul{
 }
 
 .right_pane{
-    position: fixed;
-    top: 15%;
-    right: 1%;
+    position: absolute;
+    top: 112px;
+    right: 0%;
     display: none;
     width: 30%;
     margin-left: 10px;
