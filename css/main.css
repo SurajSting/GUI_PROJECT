@@ -10,6 +10,12 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+@font-face{
+    font-family: rapscallion;
+    src: local('fonts/ryan-splint_rapscallion/RAPSCALL.TTF');
+    
+}
+
 html {
     color: #222;
     font-size: 1em;
@@ -233,6 +239,7 @@ ul{
 
 .header{
     height: 110px;
+    
     /*background-color: black;*/
     /*color: white;*/
     margin-left: 20px;
@@ -276,7 +283,7 @@ ul{
 }
 
 .left_pane{
-    width: 90%;
+    width: 94.5%;
     margin-right: 10px;
 }
 
@@ -310,6 +317,7 @@ ul{
 }
 
 .well {
+    
     padding: 15px;
     margin-bottom: 20px;
     background-color: #f5f5f5;
@@ -368,7 +376,7 @@ label{
 }
 
 .shadow{
-    box-shadow: inset 5px 5px 5px #888888;
+    box-shadow: 5px 5px 5px #888888;
 }
 
 .about-center{
@@ -574,11 +582,26 @@ label{
     }
 
 .beer_div {
-        width: 214px;
-    max-height: 121px;
-    border: 1px dashed;
+    font-family: rapscallion;
+    border-radius: 2px;
+    margin-right: 6px;
+    margin-bottom: 5px;
+    box-shadow: 2px 2px 12px -3px;
+    text-align: center;
+    position: relative;
+    width: 214px;
+    height: 125px;
+    /* max-height: 129px; */
+    /* border: 1px dashed; */
+    display: inline-table;
 }
-
+.beer_div:hover{
+    opacity: 0.6;
+    
+}
+.beer_div > p{
+    
+}
 #label_total{
     
     position: relative;
@@ -615,6 +638,14 @@ height: 66px;
     float: left;
     width: 100%;
     
+}
+
+#notebook{
+    
+        width: 100%;
+    left: 50%;
+    position: relative;
+    margin-left: -46%;
 }
 
 #div_selected_articles{
