@@ -746,6 +746,7 @@ height: 66px;
     font-size: 15px;
     /* padding: 4px 12px 8px 13px; */
     text-decoration: none;
+    outline: 0px;
 }
 
 .delete:hover {

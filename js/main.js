@@ -261,7 +261,7 @@ function deleteFromIdArray(id){
 
         if(id_array.length == 0)
         {
-            $('.left_pane').animate({"width": '+=33%'}, 500);
+            $('.left_pane').animate({"width": '+=32.9%'}, 500);
             $('.right_pane').slideToggle('fast');
         }
 
@@ -319,12 +319,11 @@ function beerCountRightPaneDecrement(id){
       
        
        $('#r'+id+'').slideToggle();
-       setTimeout(function(){
-       $('#r'+div_id+'').remove();
+       setTimeout(function(){ //to let the animation do it's job, then actually removing the html
+           $('#r'+div_id+'').remove();
        }, 500);
        
-       //Delete it from the internal storage
-       deleteFromIdArray(div_id);
+       deleteFromIdArray(div_id); //Then also delete it from the internal storage
            
        $('#purchase_form').remove('#r'+div_id+'');
    }
