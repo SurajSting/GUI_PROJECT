@@ -260,7 +260,11 @@ ul{
 }
 
 .content_width{
-    width: 45%;
+    width: 35%;
+}
+
+.flagdiv_width{
+    width: 55%;
 }
 
 .margin_top{
