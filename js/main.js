@@ -596,7 +596,7 @@ function getData(){
                             "<p class='name'>"+field[j].namn+"</p> " +
                             "<label class='priceLabel' for='priceVal"+j+"'>Price: </label>"+            
                             "<p id='priceVal"+j+"'class='priceValue'>"+field[j].price+"</p>" +
-                            "<label class='countLabel' for='countVal"+j+"' style='display: "+is_hidden+"'>Beers left: </label>"+
+                            "<label class='count' for='countVal"+j+"' style='display: "+is_hidden+"'>Beers left: </label>"+
                             "<p class='count' id='countVal' style='display: "+is_hidden+"'>"+field[j].count+"</p>" +
                         " </div>");
                     }

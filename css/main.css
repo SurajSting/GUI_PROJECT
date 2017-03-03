@@ -12,7 +12,7 @@
 
 @font-face{
     font-family: rapscallion;
-    src: local('fonts/ryan-splint_rapscallion/RAPSCALL.TTF');
+    src: local('/../fonts/ryan-splint_rapscallion/RAPSCALL.TTF') format('tff');
     
 }
 
@@ -576,13 +576,18 @@ label{
 
     h2,
     h3 {
+        
         page-break-after: avoid;
     }
     
     }
 
+
+.count{
+    
+}
 .beer_div {
-    font-family: rapscallion;
+    
     border-radius: 2px;
     margin-right: 6px;
     margin-bottom: 5px;
@@ -590,7 +595,7 @@ label{
     text-align: center;
     position: relative;
     width: 214px;
-    height: 125px;
+    height: 152px;
     /* max-height: 129px; */
     /* border: 1px dashed; */
     display: inline-table;
@@ -600,8 +605,22 @@ label{
     
 }
 .beer_div > p{
+    font-family: 'Pirata One', cursive;
+    font-size: 23px;
+}
+.beer_div > label{
+        font-size: 13px;
+    font-family: fantasy;
     
 }
+
+
+h2{
+     font-family: 'Pirata One';
+    font-size: 58px;
+    width: 700px;   
+}
+
 #label_total{
     
     position: relative;
