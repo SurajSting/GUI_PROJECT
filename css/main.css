@@ -570,6 +570,8 @@ label{
     }
 
 .beer_div {
+        width: 214px;
+    max-height: 121px;
     border: 1px dashed;
 }
 

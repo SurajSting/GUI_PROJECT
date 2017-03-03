@@ -156,7 +156,8 @@ function cancelDrop(event){
             
        // }
         
-    var appendThis =         '<div draggable="true" ondragstart="drag(event)" class="selected_article" id="r'+id+'">' +
+    var appendThis =         
+        '<div draggable="true" ondragstart="drag(event)" class="selected_article" id="r'+id+'">' +
             '<input type="hidden" value="'+id+'">' +
         '   <p class="beer_name"> '+ $('#'+id+'').children(':nth(1)').html()+ "</p>" +
         '   <p class="quantity">'+quantity+'</p>' +
@@ -177,7 +178,7 @@ function cancelDrop(event){
         
         if ($('#purchase_form').has("div").length > 0){
             if(bajs == -1 || bajs == -2){
-                $('#purchase_form div.selected_article').eq(0).before($(appendThis));
+                $('#purchase_form div.selected_article').eq(0).before($(appendThis).show('slow'));
             }else{
             $('#purchase_form div.selected_article').eq(bajs).after($(appendThis));
             //$('#purchase_form div.selected_article')[bajs].after($('<p>suck a cock</p>'));
@@ -186,7 +187,8 @@ function cancelDrop(event){
         }
         else{
             console.log("inside else");
-            $('#purchase_form').append(appendThis);  
+            $('#purchase_form').append(appendThis).hide().show('slow');  
+           
         }
         
     
@@ -259,7 +261,7 @@ function upDateTotalCost(){
     
 }
 
-//WHEN PRESSING THE INCREMENT BUTTON ON PURCHASE FORM
+//WHEN PRESSING THE INCREMENT BUTTON ON SELECTED ARTICLE
 $(document).on("click", '.btn_inc', function(e){
     
     var id = e.currentTarget.parentElement.parentElement.id.substring(1);
@@ -272,6 +274,9 @@ $(document).on("click", '.btn_inc', function(e){
     //console.log(e.currentTarget.parentElement.parentElement.id.substring(1));
 });
 
+
+
+//FUNCTION THAT DECREMENTS THE RIGHTPANE SIDE BEER AMOUNT AND INCREMENTS LEFTPANE BEER AMOUNT
 function beerCountRightPaneDecrement(id){
     
     
@@ -284,12 +289,12 @@ function beerCountRightPaneDecrement(id){
     //console.log("right_amount: " + right_amount);
 
 
-    //IF THERE'S ONLY ONE LEFT, THEN DELETE THE WHOLE ENTRY
+    //If there's only one left then dele the whole entry
    if(right_amount == 1){
       
        $('#r'+div_id+'').remove();
        
-       //DELETE IT FROM THE ID_ARRAY
+       //Delete it from the internal storage
        deleteFromIdArray(div_id);
            
        $('#purchase_form').remove('#r'+div_id+'');
@@ -330,7 +335,7 @@ $(document).on("click", '.btn_dec', function(e) {
 
 });
 
-//NEVER USED, DELETE THIS ENTRY... KEEPING IT FOR NOW
+
 function deleteEntry(id){
  
     
@@ -360,9 +365,9 @@ function deleteEntry(id){
 $(document).on("click", '.delete', function(e) {
     
    // var rightPaneBeerAmount = parseInt(e.currentTarget.parentElement.childNodes[4].innerHTML);
-    var leftDivId = e.currentTarget.parentElement.id.substring(1);
+    var id = e.currentTarget.parentElement.id.substring(1);
     
-    deleteEntry(leftDivId);
+    deleteEntry(id);
     
    /* var leftPaneBeerAmount = parseInt($('#' + leftDivId + '').children(':nth(5)').html());
     leftPaneBeerAmount += rightPaneBeerAmount;
