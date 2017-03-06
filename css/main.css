@@ -185,11 +185,11 @@ ul{
 }
 
 #beer_svg{
-    
+
     width: 59px;
     position: absolute;
-    top: -344px;
-    left: 54.5%;
+    top: -356px;
+    left: 3.5%;
     transform: rotate(-22deg);
     
 }
@@ -591,6 +591,11 @@ label{
     
     }
 
+
+#headline{
+    position: relative;
+    right: -78px;
+}
 
 .count{
     
