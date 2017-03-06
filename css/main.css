@@ -810,3 +810,28 @@ height: 66px;
   text-decoration: none;
 }
 
+
+/*Ipad Responsive Design*/
+
+@media only screen and (max-width: 1024px) {
+    body {
+        background-color: lightblue;
+    }
+
+    .right_pane{
+
+    }
+
+    #welcome{
+        position: relative;
+        top: 3px;
+    }
+
+
+    .flagdiv_width {
+        width: 50%;
+        position: relative;
+        top: -31px;
+        left: -50px;
+    }
+}
