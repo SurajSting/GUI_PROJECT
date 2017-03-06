@@ -16,7 +16,8 @@ var lastKey;
 */
 var undoStorage = [];
 var redoStorage = [];
-
+var traslated = false;
+var showdata = false;
 
 
 
@@ -543,12 +544,24 @@ $(document).on("click", '#btn_purchase', function(e){
             
 
             $('.translate').click( function() {
-                
+
+                translated = true;
                 var selectedlang = $(this).text();
                 loadBundles(selectedlang != 'browser' ? selectedlang: null);
 
+
+                if(showdata = true){
+                    console.log(showdata);
+                    loadBundles(selectedlang != 'browser' ? selectedlang: null);
+                    getData();
+                    
+                }
+
                 
     });
+
+
+
 });
             
 
@@ -610,7 +623,12 @@ $(document).on("click", '.btn_success', function(e){
                 if(uName in userlist){
 
                     if(pWord == userlist[uName]){       
+                        
                         getData();
+                        $("#undo").show();
+                        $("#redo").show();
+
+
                         $("#welcome").show().html(jQuery.i18n.prop(back));
 
                         if(userid[uName] == "3"){
@@ -651,6 +669,8 @@ function getData(){
         $.each(result, function(i, field){
             $("#note").append(field + "");
             console.log(i,field.length, field[0].price);
+
+            showdata = true;
 
 
             if(i == "payload"){

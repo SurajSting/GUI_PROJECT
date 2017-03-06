@@ -53,8 +53,8 @@
 </svg>
     <svg version="1.1" class="undo_redo" id="btn_undo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          width="497.25px" height="497.25px" viewBox="0 0 497.25 497.25" style="enable-background:new 0 0 497.25 497.25;"
-         xml:space="preserve">
-        <g id="undo">
+         xml:space="preserve" >
+        <g id="undo" hidden>
             <path d="M248.625,89.25V0l-127.5,127.5l127.5,127.5V140.25c84.15,0,153,68.85,153,153c0,84.15-68.85,153-153,153
                 c-84.15,0-153-68.85-153-153h-51c0,112.2,91.8,204,204,204s204-91.8,204-204S360.825,89.25,248.625,89.25z"/>
         </g>
@@ -62,8 +62,8 @@
     
         <svg version="1.1" class="undo_redo" id="btn_redo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          width="497.25px" height="497.25px" viewBox="0 0 497.25 497.25" style="enable-background:new 0 0 497.25 497.25;"
-         xml:space="preserve">
-        <g id="undo">
+         xml:space="preserve" >
+        <g id="redo" hidden>
             <path d="M248.625,89.25V0l-127.5,127.5l127.5,127.5V140.25c84.15,0,153,68.85,153,153c0,84.15-68.85,153-153,153
                 c-84.15,0-153-68.85-153-153h-51c0,112.2,91.8,204,204,204s204-91.8,204-204S360.825,89.25,248.625,89.25z"/>
         </g>
@@ -109,10 +109,14 @@
 </div>
 
 <!-- Add your site or application content here -->
-    <div id="block" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="block" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
 <div class="page-wrap">
+        
     
     <div class="content content_width left_pane float_left well shadow">
+   
+    <div>
         <div id="notebook">
         
         </div>
@@ -121,7 +125,7 @@
 
             Vestibulum accumsan porttitor ipsum nec malesuada. In quis nisi euismod, tincidunt dolor eget, convallis sem. Donec tristique consequat quam eu fermentum. Suspendisse nec turpis sed justo consequat feugiat. In velit turpis, scelerisque vitae tellus eget, pulvinar sodales orci. Etiam id orci finibus arcu porttitor varius nec quis nibh. Etiam ut nibh convallis, tincidunt mauris nec, fermentum erat. Donec quis magna nec elit ornare ultrices in eget eros. Aenean semper sed nisl a facilisis. </p>
 -->   
-</div>
+    </div>
     <div id="right_pane" class="content content_width right_pane float_right well shadow">
 <p id="selectit"> </p>
                 <div id="div_selected_articles">
