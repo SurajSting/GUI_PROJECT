@@ -819,32 +819,67 @@ height: 66px;
         width: 100%;
     }
 
+    #headline {
+        position: relative;
+        right: -78px;
+        font-size: 34px;
+    }
+
     .left_pane{
         position: relative;
-        top: -43px;
+        top: -25px;
         width: 93%;
     }
 
 
     .right_pane{
-
+        position: absolute;
+        top: -10px;
+        left: 623px;
+        display: block;
     }
 
     #loginform{
         position: relative;
-        top: -52px;
+        top: -38px;
         right: -64px;
     }
 
-    #phead{
-        position: relative;
-        top: 34px;
-        right: 262px;
+    #phead {
+        position: absolute;
+        top: 43px;
+        right: 307px;
     }
 
-    #pWord{
-        position: relative;
-        left: -21px;
+    #uhead{
+        position: absolute;
+        left: 104px;
+        top: 6px;
+    }
+
+    #pWord {
+        position: absolute;
+        left: 228px;
+        top: 38px;
+    }
+
+    .input-sm {
+        height: 20px;
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+        position: absolute;
+        left: 228px;
+    }
+
+    .btn_success {
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+        position: absolute;
+        top: 42px;
+        left: 409px;
     }
 
     #welcome{
@@ -865,10 +900,21 @@ height: 66px;
         left: -50px;
     }
 
+    #btn_undo{
+        position: absolute;
+        left: 935px;
+    }
+
+    #btn_redo{
+        position: absolute;
+        left: 964px;
+        top: 71px;
+    }
+
     .undo_redo {
-        position: relative;
-        left: 444px;
-        top: 70px;
+        position: absolute;
+        left: 952px;
+        top: 71px;
     }
 
 }
