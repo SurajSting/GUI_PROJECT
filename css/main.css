@@ -99,7 +99,8 @@ textarea {
 
 .undo_redo{
     position: relative;
-    top: 20px;
+    top: 45px;
+    right: -750px;
     width: 30px;
     height: 30px;
 }
