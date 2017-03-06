@@ -619,9 +619,13 @@ label{
     font-size: 23px;
 }
 .beer_div > label{
-        font-size: 13px;
-    font-family: fantasy;
+    font-size: 13px;
+    font-family: 'Josefin Sans', sans-serif;
     
+}
+
+#welcome {
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 
@@ -636,25 +640,36 @@ h2{
     position: relative;
     left: 37%;
     top: 27px;
+    font-family: 'Josefin Sans', bold;
+    font-size: 22px;
     
 }
 
-.beer_name{
-    
+.beer_name {
+    font-family: 'Pirata One';
     position: relative;
     float: left;
     top: 21px;
-    
+    font-size: 23px;
 }
-#total{
- 
-        left: 52%;
+
+#total {
+    left: 52%;
     position: relative;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 23px;
+    top: -9px;
 }
+
+
 #btn_purchase{
     position: relative;
     float: right;
     bottom: 32px;
+    font-family: 'Josefin Sans', bold;
+    font-size: 18px;
+    top: -44px;
+    left: -17px;
 }
 #purchase_form{
     z-index: 500;
@@ -667,6 +682,10 @@ height: 66px;
     float: left;
     width: 100%;
     
+}
+
+#selectit{
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 #notebook{
@@ -699,6 +718,7 @@ height: 66px;
     
 }
 .quantity{
+    font-family: 'Josefin Sans', sans-serif;
     right: 36%;
     top: 21px;
     position: relative;
@@ -706,35 +726,61 @@ height: 66px;
 }
 
 .btn_inc{
-    
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 50px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 19px;
+    background: #000000;
+    padding: 0px 8px 0px 8px;
+    text-decoration: none;
+    position: relative;
+    top: -19px;
+    border: 0px;
     position: relative;
     top: -22px;
     
 }
+
+.btn_inc:hover{
+    opacity: 0.6;
+}
+
 .btn_dec{
-    
-        position: relative;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 50px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 19px;
+    background: #000000;
+    padding: 0px 11px 3px 11px;
+    text-decoration: none;
+    text-align: center;
+    border: 0px;
+    position: relative;
     left: -7%;
     top: 9px;
 }
+.btn_dec:hover{
+    opacity: 0.6;
+}
+
 .increment{
 
     position: relative;
-    left: -8%;
-    
+    left: 1%;
+    top: 1px;
 }
 .price{
      position: relative;
 }
 .delete{
     position: relative;
-    right: 6%;
-    background: #ccd1d4;
-    background-image: -webkit-linear-gradient(top, #ccd1d4, #74858f);
-    background-image: -moz-linear-gradient(top, #ccd1d4, #74858f);
-    background-image: -ms-linear-gradient(top, #ccd1d4, #74858f);
-    background-image: -o-linear-gradient(top, #ccd1d4, #74858f);
-    background-image: linear-gradient(to bottom, #ccd1d4, #74858f);
+    top: -4px;
+    right: 2%;
+    background: #000000;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;

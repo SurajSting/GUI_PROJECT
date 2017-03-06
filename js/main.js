@@ -290,7 +290,7 @@ function upDateTotalCost(){
         total += (price * quantity);
     }
     
-     $('#total').html(total);
+     $('#total').html(total.toFixed(2));
     
 }
 
