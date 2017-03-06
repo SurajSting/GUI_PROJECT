@@ -160,7 +160,8 @@ function cancelDrop(event){
         } 
         else
         {
-            alert("No more beers for you!");
+            var nobear = 'Nobear';
+            alert(jQuery.i18n.prop(nobear));
 
         }
         
@@ -169,13 +170,20 @@ function cancelDrop(event){
     }
     
     function createDiv(id, quantity, index){
+        var selectits = 'Selected';
+        var totals = 'Total';
+        var buy = 'Buy';
        //
         if($('.right_pane').css("display") == ("none")){ //if the right pane is not visible, show it
             //console.log("I'll be damned!");
+            
             $('.right_pane').slideDown();
             $('.left_pane').animate({"width": '-=33%'}, 500);
+            
         }
-    
+        $("#selectit").html(jQuery.i18n.prop(selectits));
+        $("#label_total").html(jQuery.i18n.prop(totals));
+        $("#btn_purchase").html(jQuery.i18n.prop(buy));
         console.log("Inside the creation");
       // $('#purchase_form div.selected_article:nth-child('+index+')').after($ if(index == 0){
             
@@ -584,6 +592,7 @@ $(document).on("click", '.btn_success', function(e){
     var useru = 'User';
     var admin = 'Administrator';
     var logouts = 'Logout';
+    var back = 'Welcomeback';
     console.log("Name:"+uName+"Word:"+pWord);
     
 
@@ -602,16 +611,17 @@ $(document).on("click", '.btn_success', function(e){
 
                     if(pWord == userlist[uName]){       
                         getData();
+                        $("#welcome").show().html(jQuery.i18n.prop(back));
 
                         if(userid[uName] == "3"){
                             
                             $("#margin_bottom").hide();
-                            $("#welcome").show().hrml(jQuery.i18n.prop(useru)+": "+ userfirst[uName]+"!"+" <button class='btn_logout gettext' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
+                            $("#welcome").append(jQuery.i18n.prop(useru)+": "+ userfirst[uName]+"!"+" <button class='btn_logout gettext' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
 
                         }else if(userid[uName] == "0"){
                            
                             $("#margin_bottom").hide();
-                            $("#welcome").show().html(jQuery.i18n.prop(admin)+": "+ userfirst[uName]+"!"+" <button class='btn_logout gettext' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
+                            $("#welcome").append(jQuery.i18n.prop(admin)+": "+ userfirst[uName]+"!"+" <button class='btn_logout gettext' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
                         }
 
 

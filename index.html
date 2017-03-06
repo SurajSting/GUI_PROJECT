@@ -74,18 +74,17 @@
         <ul id="flags">
             <li><p class="flag-icon flag-icon-gb translate"><text hidden>eg</text></p></li>
             <li><p class="flag-icon flag-icon-se translate"><text hidden>se</text></p></li>
-            <li><p class="flag-icon flag-icon-in translate"><text hidden>ins</text></p></li>
-            <li><p class="flag-icon flag-icon-tw translate"><text hidden>TW</text></p></li>
+            
         </ul>
         <div id="loginform">
             <form class="margin_bottom" id="margin_bottom">
             <label><div id = "uhead">UserName</div></label>
-            <input class="login input-sm" type="text" placeholder="Username" name="uName" id="uName" required>
+            <input class="login input-sm" type="text"  name="uName" id="uName" required>
             <label><div id = "phead">Password</div></label>
-            <input class="login input-sm" type="password" placeholder="Password" name="pWord" id="pWord" required>
+            <input class="login input-sm" type="password"  name="pWord" id="pWord" required>
             <button class="btn_success" type="button" id="btlogin">Login</button>
         </form>
-                 <div id="welcome" align="center" class="gettext" hidden>Welcome back!</div>  
+                 <div id="welcome" align="center" class="gettext" hidden></div>  
         </div>
        
         <ul id="navbar" class="margin_top">
@@ -123,7 +122,7 @@
 -->   
 </div>
     <div id="right_pane" class="content content_width right_pane float_right well shadow">
-<p> Selected articles:</p>
+<p id="selectit"> </p>
                 <div id="div_selected_articles">
                     <form id="purchase_form" action="" ondragover="allowDrop(event)" ondrop="cancelDrop(event)">
                         <!--<div class="selected_article" style="Display: none">Dont mind me</p>-->
@@ -131,9 +130,9 @@
 
                     </form>
                     <div id="div_buy">
-                        <label id="label_total" for="total">Total:</label>
+                        <label id="label_total" for="total"></label>
                         <p id="total"></p>
-                        <button type="submit" class="btn" id="btn_purchase">Purchase</button>
+                        <button type="submit" class="btn" id="btn_purchase"></button>
                     </div>
                 </div>
     </div>
