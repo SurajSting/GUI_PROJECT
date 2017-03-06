@@ -31,7 +31,7 @@ console.log("rightpane " + $('#purchase_form').offset().top);
 
 
 var rightPaneTop = 121;  // get initial position of the element
-
+if ($(window).width() > 1025){
 $(window).scroll(function() {                  // assign scroll event listener
 
     var currentScroll = $(window).scrollTop(); // get current position
@@ -48,8 +48,38 @@ $(window).scroll(function() {                  // assign scroll event listener
             top: '112px'
         });
     }
-
+                 
 });
+} else{
+    $(window).scroll(function() {                  // assign scroll event listener
+
+    //rightPaneTop = $('.right_pane').offset().top;
+    var currentScroll = $(window).scrollTop(); // get current position
+
+     //   console.log(currentScroll);
+        
+    if (currentScroll >= rightPaneTop) {           // apply position: fixed if you
+        $('#right_pane').css({                      // scroll to that element or below it
+            position: 'fixed',
+            top: '-10px',
+            left: '623px',
+            width: '50%;'
+        
+        });
+    } else {                                   // apply position: static
+        $('#right_pane').css({                      // if you scroll above it
+            position: 'absolute',
+            top: '-11px',
+            left: '623px',
+            width: '50%;'
+        });
+    }
+                 
+});
+
+}
+
+
 function drag(e) {
         
         e.dataTransfer.setData("text", e.target.id);

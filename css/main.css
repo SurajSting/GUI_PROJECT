@@ -834,9 +834,10 @@ height: 66px;
 
     .right_pane{
         position: absolute;
-        top: -10px;
+        top: -11px;
         left: 623px;
-        display: block;
+        width: 50%;
+        display: none;
     }
 
     #loginform{
