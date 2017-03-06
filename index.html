@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Pirata+One" rel="stylesheet">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    
 </head>
 <body>
 <!--<header>
@@ -67,22 +68,22 @@
         </g>
     </svg>
     <div class="content content_width float_left">
-        <h2><div class="gettext">Welcome to the Flying Dutchman</div></h2>
+        <h2><div class="gettext" id='headline'></div></h2>
     </div>
     <div class="content flagdiv_width float_right">
         <ul id="flags">
-            <li><p class="flag-icon flag-icon-gb translate"><text hidden>us_eg</text></p></li>
+            <li><p class="flag-icon flag-icon-gb translate"><text hidden>eg</text></p></li>
             <li><p class="flag-icon flag-icon-se translate"><text hidden>se</text></p></li>
             <li><p class="flag-icon flag-icon-in translate"><text hidden>ins</text></p></li>
-            <li><p class="flag-icon flag-icon-tw translate"><text hidden>zh_TW</text></p></li>
+            <li><p class="flag-icon flag-icon-tw translate"><text hidden>TW</text></p></li>
         </ul>
         <div id="loginform">
             <form class="margin_bottom" id="margin_bottom">
-            <label><div class="gettext">UserName</div></label>
+            <label><div id = "uhead">UserName</div></label>
             <input class="login input-sm" type="text" placeholder="Username" name="uName" id="uName" required>
-            <label><div class="gettext">Password</div></label>
+            <label><div id = "phead">Password</div></label>
             <input class="login input-sm" type="password" placeholder="Password" name="pWord" id="pWord" required>
-            <button class="btn_success gettext" type="button" id="btn_success">Login</button>
+            <button class="btn_success" type="button" id="btlogin">Login</button>
         </form>
                  <div id="welcome" align="center" class="gettext" hidden>Welcome back!</div>  
         </div>
@@ -146,7 +147,8 @@
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="js/plugins.js"></script>
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
-<script src="js/jquery.i18n.js"></script>
+<script type="text/javascript" src="js/jquery.i18n.properties.js"></script>
+<script type="text/javascript" language="JavaScript" src="js/jquery.i18n.properties-min.js"></script>
 <script src="js/main.js"></script>
 
 <script>

@@ -530,21 +530,46 @@ $(document).on("click", '#btn_purchase', function(e){
     
 });
 
- $(document).ready( function() {
+ $(document).ready(function() {
+            loadBundles('eg');
+            
 
-      
-      $._.setAnchorByClass( 'gettext' );
+            $('.translate').click( function() {
+                
+                var selectedlang = $(this).text();
+                loadBundles(selectedlang != 'browser' ? selectedlang: null);
 
-      
-      $.i18n.setLocale("jp");
-
-      
-      $('.translate').click( function() {
-        $._.setLocale( $(this).text() ) 
-        $._.replaceByLocale( "language/example." + $._.getLocale()  + ".json" );
-      });
-
+                
+    });
 });
+            
+
+
+ function loadBundles(lang) {
+            jQuery.i18n.properties({
+                name:'Messages', 
+                path:'bundle/', 
+                mode:'both',
+                language:lang, 
+                callback: function() {
+                    updateExamples();
+                }
+            });
+        }
+
+function updateExamples() {
+            // Accessing values through the map
+
+            var headline = 'Welcome';
+            var usersname = 'Username';
+            var passwords = 'Password';
+            var logins = 'Login';
+            $("#headline").html(jQuery.i18n.prop(headline));
+            $("#uhead").html(jQuery.i18n.prop(usersname));
+            $("#phead").html(jQuery.i18n.prop(passwords));
+            $("#btlogin").html(jQuery.i18n.prop(logins));
+
+        }
 
 
     
@@ -556,6 +581,9 @@ $(document).on("click", '.btn_success', function(e){
     var userlist = {};
     var userid = {};
     var userfirst = {};
+    var useru = 'User';
+    var admin = 'Administrator';
+    var logouts = 'Logout';
     console.log("Name:"+uName+"Word:"+pWord);
     
 
@@ -574,19 +602,16 @@ $(document).on("click", '.btn_success', function(e){
 
                     if(pWord == userlist[uName]){       
                         getData();
+
                         if(userid[uName] == "3"){
                             
                             $("#margin_bottom").hide();
-                            $("#welcome").show().append("Users: "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>Log Out</button>");
+                            $("#welcome").show().hrml(jQuery.i18n.prop(useru)+": "+ userfirst[uName]+"!"+" <button class='btn_logout gettext' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
 
                         }else if(userid[uName] == "0"){
                            
                             $("#margin_bottom").hide();
-                            $("#welcome").show().append("Administrator: "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>Log Out</button>");
-                        }else{
-                           
-                            $("#margin_bottom").hide();
-                            $("#welcome").show().append("No one: "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>Log Out</button>");
+                            $("#welcome").show().html(jQuery.i18n.prop(admin)+": "+ userfirst[uName]+"!"+" <button class='btn_logout gettext' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
                         }
 
 
@@ -608,6 +633,10 @@ $(document).on("click", '.btn_success', function(e){
 //GETTING THE DATA FROM THE API
 function getData(){
 
+    var names = 'Name';
+    var prices = 'Price';
+    var bearleft = 'Bearleft';
+
     $.getJSON("http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jorass&action=inventory_get", function(result){
         $.each(result, function(i, field){
             $("#note").append(field + "");
@@ -624,11 +653,11 @@ function getData(){
                             is_hidden = 'initial';
                         }
                         $("#notebook").append("<div class='beer_div' id="+field[j].beer_id+">"+
-                            "<label class='nameLabel'>Name: </label>" +
+                            "<label class='nameLabel gettext'>"+jQuery.i18n.prop(names)+"</label>" +
                             "<p class='name'>"+field[j].namn+"</p> " +
-                            "<label class='priceLabel' for='priceVal"+j+"'>Price: </label>"+            
+                            "<label class='priceLabel gettext' for='priceVal"+j+"'>"+eval(prices)+"</label>"+            
                             "<p id='priceVal"+j+"'class='priceValue'>"+field[j].price+"</p>" +
-                            "<label class='count' for='countVal"+j+"' style='display: "+is_hidden+"'>Beers left: </label>"+
+                            "<label class='count' for='countVal"+j+"' style='display: "+is_hidden+"'>"+jQuery.i18n.prop(bearleft)+"</label>"+
                             "<p class='count' id='countVal' style='display: "+is_hidden+"'>"+field[j].count+"</p>" +
                         " </div>");
                     }
@@ -637,3 +666,4 @@ function getData(){
         });
     });
 }
+
