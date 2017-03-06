@@ -318,8 +318,6 @@ ul{
     width: 30%;
     margin-left: 10px;
     z-index: 20;
-    min-height: 164px;
-        max-height: 400px;
 }
 
 .float_right{
@@ -651,6 +649,7 @@ h2{
     float: left;
     top: 21px;
     font-size: 23px;
+    right: -14px;
 }
 
 #total {
@@ -672,7 +671,6 @@ h2{
     left: -17px;
 }
 #purchase_form{
-    z-index: 500;
     max-height: 400px;
 }
 .selected_article{
@@ -697,8 +695,9 @@ height: 66px;
 }
 
 #div_selected_articles{
-    
-    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 500px;
 }
 .drink_type_name{
     float: left;
@@ -755,7 +754,7 @@ height: 66px;
     color: #ffffff;
     font-size: 19px;
     background: #000000;
-    padding: 0px 11px 3px 11px;
+    padding: 0px 10px 0px 10px;
     text-decoration: none;
     text-align: center;
     border: 0px;
