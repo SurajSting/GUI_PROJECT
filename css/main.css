@@ -671,6 +671,8 @@ h2{
     left: -17px;
 }
 #purchase_form{
+    overflow-y: scroll;
+    overflow-x: hidden;
     max-height: 400px;
 }
 .selected_article{
@@ -695,8 +697,6 @@ height: 66px;
 }
 
 #div_selected_articles{
-    overflow-y: scroll;
-    overflow-x: hidden;
     max-height: 500px;
 }
 .drink_type_name{
