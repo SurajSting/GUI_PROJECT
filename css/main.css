@@ -816,22 +816,59 @@ height: 66px;
 @media only screen and (max-width: 1024px) {
     body {
         background-color: lightblue;
+        width: 100%;
     }
+
+    .left_pane{
+        position: relative;
+        top: -43px;
+        width: 93%;
+    }
+
 
     .right_pane{
 
     }
 
+    #loginform{
+        position: relative;
+        top: -52px;
+        right: -64px;
+    }
+
+    #phead{
+        position: relative;
+        top: 34px;
+        right: 262px;
+    }
+
+    #pWord{
+        position: relative;
+        left: -21px;
+    }
+
     #welcome{
+        /*
         position: relative;
         top: 3px;
+    */
+        position: relative;
+        top: 55px;
+        left: -24px;
     }
 
 
     .flagdiv_width {
         width: 50%;
         position: relative;
-        top: -31px;
+        top: -37px;
         left: -50px;
     }
+
+    .undo_redo {
+        position: relative;
+        left: 444px;
+        top: 70px;
+    }
+
 }
