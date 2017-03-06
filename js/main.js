@@ -16,14 +16,13 @@ var lastKey;
 */
 var undoStorage = [];
 var redoStorage = [];
-var traslated = false;
-var showdata = false;
 
 
 
 
 var id_array = [];
 var beer_count_purchase = 2;
+var flag = 0;
 
     //Drag event
 
@@ -530,17 +529,14 @@ $(document).on("click", '#btn_purchase', function(e){
             
 
             $('.translate').click( function() {
-
-                translated = true;
+          
                 var selectedlang = $(this).text();
                 loadBundles(selectedlang != 'browser' ? selectedlang: null);
                 getData();
-                    
-                
-
-                
+               
     });
 
+            
 
 
 });
@@ -609,36 +605,27 @@ $(document).on("click", '.btn_success', function(e){
                         $("#undo").show();
                         $("#redo").show();
 
-
-                        $(document).on("click", '.beer_div', function(e){
+                        flag = 1;
+                         $(document).on("click", '.beer_div', function(e){
     
-                            /*if($('.right_pane').css("display") == ("none")){
-                                $('.right_pane').slideDown();
-                                $('.left_pane').animate({"width": '-=33%'}, 500);
-                            } else {
-                                //$('.left_pane').animate({"width": '+=33%'}, 500);
-                            }*/
-                            
                             beerCountRightPaneIncrement(e.currentTarget.id);
                             undoStorage.push([e.currentTarget.id, 'inc']);
                             
                             redoStorage = [];
 
                         });
-
-
-
+                        
                         $("#welcome").show().html(jQuery.i18n.prop(back));
 
                         if(userid[uName] == "3"){
                             
                             $("#margin_bottom").hide();
-                            $("#welcome").append(jQuery.i18n.prop(useru)+": "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>"+$('.btn_logout').html(jQuery.i18n.prop(logouts))+"</button>");
+                            $("#welcome").append(jQuery.i18n.prop(useru)+": "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
 
                         }else if(userid[uName] == "0"){
                            
                             $("#margin_bottom").hide();
-                            $("#welcome").append(jQuery.i18n.prop(admin)+": "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>"+$('.btn_logout').html(jQuery.i18n.prop(logouts))+"</button>");
+                            $("#welcome").append(jQuery.i18n.prop(admin)+": "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
                         }
 
 
@@ -657,18 +644,11 @@ $(document).on("click", '.btn_success', function(e){
 });
 
 $(document).on('click', '.btn_logout', function(e){
-
-    getData();
-    $("#welcome").hide();
-    $("#margin_bottom").show();
-    $("#undo").hide();
-    $("#redo").hide();
-    //$('.right_pane').hide();
-
-
-
+    location.reload();
+   
 
 });
+
 
 
 //GETTING THE DATA FROM THE API
@@ -709,4 +689,6 @@ function getData(){
         });
     });
 }
+
+            
 
