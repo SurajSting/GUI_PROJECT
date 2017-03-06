@@ -241,21 +241,6 @@ function cancelDrop(event){
     }
 
 //When adding a product, the 'total products' div show up. Right now it toggleing.
-$(document).on("click", '.beer_div', function(e){
-    
-    /*if($('.right_pane').css("display") == ("none")){
-        $('.right_pane').slideDown();
-        $('.left_pane').animate({"width": '-=33%'}, 500);
-    } else {
-        //$('.left_pane').animate({"width": '+=33%'}, 500);
-    }*/
-    
-    beerCountRightPaneIncrement(e.currentTarget.id);
-    undoStorage.push([e.currentTarget.id, 'inc']);
-    
-    redoStorage = [];
-
-});
 
 
 //DELETE ID FROM THE ID_ARRAY
@@ -541,6 +526,7 @@ $(document).on("click", '#btn_purchase', function(e){
 
  $(document).ready(function() {
             loadBundles('eg');
+            getData();
             
 
             $('.translate').click( function() {
@@ -548,14 +534,9 @@ $(document).on("click", '#btn_purchase', function(e){
                 translated = true;
                 var selectedlang = $(this).text();
                 loadBundles(selectedlang != 'browser' ? selectedlang: null);
-
-
-                if(showdata = true){
-                    console.log(showdata);
-                    loadBundles(selectedlang != 'browser' ? selectedlang: null);
-                    getData();
+                getData();
                     
-                }
+                
 
                 
     });
@@ -624,9 +605,27 @@ $(document).on("click", '.btn_success', function(e){
 
                     if(pWord == userlist[uName]){       
                         
-                        getData();
+                        
                         $("#undo").show();
                         $("#redo").show();
+
+
+                        $(document).on("click", '.beer_div', function(e){
+    
+                            /*if($('.right_pane').css("display") == ("none")){
+                                $('.right_pane').slideDown();
+                                $('.left_pane').animate({"width": '-=33%'}, 500);
+                            } else {
+                                //$('.left_pane').animate({"width": '+=33%'}, 500);
+                            }*/
+                            
+                            beerCountRightPaneIncrement(e.currentTarget.id);
+                            undoStorage.push([e.currentTarget.id, 'inc']);
+                            
+                            redoStorage = [];
+
+                        });
+
 
 
                         $("#welcome").show().html(jQuery.i18n.prop(back));
@@ -634,12 +633,12 @@ $(document).on("click", '.btn_success', function(e){
                         if(userid[uName] == "3"){
                             
                             $("#margin_bottom").hide();
-                            $("#welcome").append(jQuery.i18n.prop(useru)+": "+ userfirst[uName]+"!"+" <button class='btn_logout gettext' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
+                            $("#welcome").append(jQuery.i18n.prop(useru)+": "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>"+$('.btn_logout').html(jQuery.i18n.prop(logouts))+"</button>");
 
                         }else if(userid[uName] == "0"){
                            
                             $("#margin_bottom").hide();
-                            $("#welcome").append(jQuery.i18n.prop(admin)+": "+ userfirst[uName]+"!"+" <button class='btn_logout gettext' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
+                            $("#welcome").append(jQuery.i18n.prop(admin)+": "+ userfirst[uName]+"!"+" <button class='btn_logout' align='right'>"+$('.btn_logout').html(jQuery.i18n.prop(logouts))+"</button>");
                         }
 
 
@@ -654,6 +653,20 @@ $(document).on("click", '.btn_success', function(e){
             }
         });
     });
+
+});
+
+$(document).on('click', '.btn_logout', function(e){
+
+    getData();
+    $("#welcome").hide();
+    $("#margin_bottom").show();
+    $("#undo").hide();
+    $("#redo").hide();
+    //$('.right_pane').hide();
+
+
+
 
 });
 
@@ -683,11 +696,11 @@ function getData(){
                             is_hidden = 'initial';
                         }
                         $("#notebook").append("<div class='beer_div' id="+field[j].beer_id+">"+
-                            "<label class='nameLabel gettext'>"+jQuery.i18n.prop(names)+"</label>" +
+                            "<label class='nameLabel gettext'>"+$('.nameLabel').html(jQuery.i18n.prop(names))+"</label>" +
                             "<p class='name'>"+field[j].namn+"</p> " +
-                            "<label class='priceLabel gettext' for='priceVal"+j+"'>"+eval(prices)+"</label>"+            
+                            "<label class='priceLabel gettext' for='priceVal"+j+"'>"+$('.priceLabel').html(jQuery.i18n.prop(prices))+"</label>"+            
                             "<p id='priceVal"+j+"'class='priceValue'>"+field[j].price+"</p>" +
-                            "<label class='count' for='countVal"+j+"' style='display: "+is_hidden+"'>"+jQuery.i18n.prop(bearleft)+"</label>"+
+                            "<label class='count beerleft' for='countVal"+j+"' style='display: "+is_hidden+"'>"+$('.beerleft').html(jQuery.i18n.prop(bearleft))+"</label>"+
                             "<p class='count' id='countVal' style='display: "+is_hidden+"'>"+field[j].count+"</p>" +
                         " </div>");
                     }
