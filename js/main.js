@@ -16,10 +16,8 @@ var lastKey;
 */
 var undoStorage = [];
 var redoStorage = [];
-var traslated = false;
-var showdata = false;
-
-
+var _identy_ = "";
+var _user_ = "";
 
 
 var id_array = [];
@@ -565,7 +563,7 @@ $(document).on("click", '#btn_purchase', function(e){
 
             $('.translate').click( function() {
 
-                translated = true;
+               
                 var selectedlang = $(this).text();
                 loadBundles(selectedlang != 'browser' ? selectedlang: null);
                 getData();
@@ -573,6 +571,8 @@ $(document).on("click", '#btn_purchase', function(e){
                 $("#selectit").html(jQuery.i18n.prop(selectits));
                 $("#label_total").html(jQuery.i18n.prop(totals));
                 $("#btn_purchase").html(jQuery.i18n.prop(buy));
+
+                showwel(_identy_,_user_);
 
     });
 
@@ -644,13 +644,6 @@ $(document).on("click", '.btn_success', function(e){
 
 
                         $(document).on("click", '.beer_div', function(e){
-    
-                            /*if($('.right_pane').css("display") == ("none")){
-                                $('.right_pane').slideDown();
-                                $('.left_pane').animate({"width": '-=33%'}, 500);
-                            } else {
-                                //$('.left_pane').animate({"width": '+=33%'}, 500);
-                            }*/
                             
                             beerCountRightPaneIncrement(e.currentTarget.id);
                             undoStorage.push([e.currentTarget.id, 'inc']);
@@ -667,7 +660,8 @@ $(document).on("click", '.btn_success', function(e){
                             
                             $("#margin_bottom").hide();
 
-                           
+                            _identy_= useru;
+                            _user_ = userfirst[uName];
                             showwel(useru, userfirst[uName]);
 
 
@@ -675,7 +669,9 @@ $(document).on("click", '.btn_success', function(e){
                            
                             $("#margin_bottom").hide();
 
-                            
+
+                            _identy_= admin;
+                            _user_ = userfirst[uName];
                             showwel(admin, userfirst[uName]);
 
                         }
@@ -725,8 +721,6 @@ function getData(){
         $.each(result, function(i, field){
             $("#note").append(field + "");
             console.log(i,field.length, field[0].price);
-
-            showdata = true;
 
 
             if(i == "payload"){
