@@ -18,6 +18,7 @@ var undoStorage = [];
 var redoStorage = [];
 var _identy_ = "";
 var _user_ = "";
+var _login_ = 0;
 
 
 var id_array = [];
@@ -572,7 +573,10 @@ $(document).on("click", '#btn_purchase', function(e){
                 $("#label_total").html(jQuery.i18n.prop(totals));
                 $("#btn_purchase").html(jQuery.i18n.prop(buy));
 
-                showwel(_identy_,_user_);
+                if(_login_ == 1){
+                    showwel(_identy_,_user_);
+                }
+                
 
     });
 
@@ -641,6 +645,7 @@ $(document).on("click", '.btn_success', function(e){
                         
                         $("#undo").show();
                         $("#redo").show();
+                        _login_ = 1;
 
 
                         $(document).on("click", '.beer_div', function(e){
