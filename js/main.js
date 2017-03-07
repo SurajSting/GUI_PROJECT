@@ -70,13 +70,13 @@ $(window).scroll(function() {
         $('#right_pane').css({                      // scroll to that element or below it
             position: 'fixed',
             top: '-10px',
-            left: '630px'
+            left: '528px'
         });
     } else {                                   // apply position: static
         $('#right_pane').css({                      // if you scroll above it
             position: 'absolute',
             top: '-11px',
-            left: '623px'
+            left: '507px'
         });
     }
                  
@@ -154,21 +154,23 @@ function cancelDrop(event){
     //CHECK IF THERE ARE ANY BEER LEFT FOR THAT PARTICULAR ARTICLE
     
     function beerCountRightPaneIncrement(id){
-        
-        
-        if($('.right_pane').css("display") == ("none")){ //if the right pane is not visible, show it
-            //console.log("I'll be damned!");
-            $('.right_pane').slideToggle();
-            $('.left_pane').animate({"width": '-=33%'}, 500);
-        } else {
-           // console.log("bullshit!");
-            //$('.left_pane').animate({"width": '+=33%'}, 500);
-        }
+
+        rightPaneShow();
         
         var beer_left = $('#'+id+'').children(':nth(5)').html(); //leftpane beer-count-variable
 
+
+
+
         if(beer_left >= 1){ //If there's any beer left
             beer_left--;
+
+            if(beer_left <= 10){
+                ($('#'+id+'').children(':nth(5)').css('display', 'initial'));
+                ($('#'+id+'').children(':nth(4)').css('display', 'initial'));
+                //console.log($('#'+id+'').children(':nth(5)').css('display', 'initial'));
+            }
+
             $('#'+id+'').children(':nth(5)').html(beer_left); //decrement leftpane beer count
 
             var rightPaneBeerIndex = checkIfAlreadyPicked(id);
@@ -203,17 +205,27 @@ function cancelDrop(event){
         upDateTotalCost();
     
     }
-    
+
+    function rightPaneShow(){
+
+
+    if($('.right_pane').css("display") == ("none")){ //if the right pane is not visible, show it
+        $('.right_pane').slideToggle();
+        if ($(window).width() > 1025){
+            $('.left_pane').animate({"width": '-=33%'}, 500);
+        }
+        else
+        {
+            $('.left_pane').animate({"width": '-=47%'}, 500);
+        }
+    }
+    }
+
+
     function createDiv(id, quantity, index){
         
        //
-        if($('.right_pane').css("display") == ("none")){ //if the right pane is not visible, show it
-            //console.log("I'll be damned!");
-            
-            $('.right_pane').slideDown();
-            $('.left_pane').animate({"width": '-=33%'}, 500);
-            
-        }
+        rightPaneShow();
         $("#selectit").html(jQuery.i18n.prop(selectits));
         $("#label_total").html(jQuery.i18n.prop(totals));
         $("#btn_purchase").html(jQuery.i18n.prop(buy));
@@ -285,10 +297,18 @@ function deleteFromIdArray(id){
 
            }
 
+
         if(id_array.length == 0)
         {
-            $('.left_pane').animate({"width": '+=32.9%'}, 500);
             $('.right_pane').slideToggle('fast');
+            if ($(window).width() > 1025){
+                $('.left_pane').animate({"width": '+=32.9%'}, 500);
+            }
+            else
+            {
+                $('.left_pane').animate({"width": '+=47%'}, 500);
+            }
+
         }
 
 }
@@ -361,6 +381,12 @@ function beerCountRightPaneDecrement(id){
 
     var left_amount = $('#'+ div_id+'').children(':nth(5)').html();
     left_amount++;
+
+    if(left_amount > 10){
+        ($('#'+id+'').children(':nth(5)').css('display', 'none'));
+        ($('#'+id+'').children(':nth(4)').css('display', 'none'));
+        //console.log($('#'+id+'').children(':nth(5)').css('display', 'initial'));
+    }
 
     $('#'+ div_id+'').children(':nth(5)').html(left_amount);
    
