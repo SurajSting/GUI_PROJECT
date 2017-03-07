@@ -664,6 +664,7 @@ h2{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 23px;
     top: -9px;
+    width: 30px;
 }
 
 
@@ -837,6 +838,7 @@ height: 66px;
         top: -11px;
         left: 623px;
         width: 50%;
+        background-color: red;
         display: none;
     }
 

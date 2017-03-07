@@ -30,23 +30,24 @@ var totals = 'Total';
 var buy = 'Buy';
 
 
-    //Drag event
-
-console.log("rightpane " + $('#purchase_form').offset().top);
+//Drag event
+console.log("rightpane " + $('.right_pane').offset().top);
 
 
 
 var rightPaneTop = 121;  // get initial position of the element
-if ($(window).width() > 1025){
-$(window).scroll(function() {                  // assign scroll event listener
 
+console.log($(window).width());
+
+if ($(window).width() > 1025){
+$(window).scroll(function() {
+    console.log("Im here 1");// assign scroll event listener
     var currentScroll = $(window).scrollTop(); // get current position
 
     if (currentScroll >= rightPaneTop) {           // apply position: fixed if you
         $('#right_pane').css({                      // scroll to that element or below it
             position: 'fixed',
             top: '-10px'
-        
         });
     } else {                                   // apply position: static
         $('#right_pane').css({                      // if you scroll above it
@@ -57,27 +58,25 @@ $(window).scroll(function() {                  // assign scroll event listener
                  
 });
 } else{
+    console.log("Im here 2");
     $(window).scroll(function() {                  // assign scroll event listener
+        var rightPaneTop = 125;
 
-    //rightPaneTop = $('.right_pane').offset().top;
-    var currentScroll = $(window).scrollTop(); // get current position
-
+        var currentScroll = $(window).scrollTop(); // get current position
+        console.log("Im here 2 " + currentScroll);
      //   console.log(currentScroll);
         
     if (currentScroll >= rightPaneTop) {           // apply position: fixed if you
         $('#right_pane').css({                      // scroll to that element or below it
             position: 'fixed',
             top: '-10px',
-            left: '623px',
-            width: '50%;'
-        
+            left: '630px'
         });
     } else {                                   // apply position: static
         $('#right_pane').css({                      // if you scroll above it
             position: 'absolute',
             top: '-11px',
-            left: '623px',
-            width: '50%;'
+            left: '623px'
         });
     }
                  
