@@ -738,7 +738,63 @@ function showwel(identy, usernames){
     $("#welcome").show().html(jQuery.i18n.prop(back)+jQuery.i18n.prop(identy)+": "+ usernames+"!"+" <button class='btn_logout' align='right'>"+jQuery.i18n.prop(logouts)+"</button>");
 }
 
+$(document).on('click', '.btn_beer_info', function(e){
+    var id = e.currentTarget.parentElement.id;
 
+    getBeerData(id);
+});
+
+function getBeerData(id) {
+
+    var alcohol;
+    var producer;
+    var countryorigin;
+    var alc_type;
+
+    $.getJSON("http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jorass&action=beer_data_get&beer_id=" + id + "", function (result) {
+        $.each(result, function (i, field) {
+            if(i == "payload") {
+                for(var j = 0; j < field.length; j++){
+                    if(field[j].ursprunglandnamn != "")
+                        countryorigin = field[j].ursprunglandnamn;
+                    else if(field[j].ursprung != "")
+                            countryorigin = field[j].ursprung;
+
+
+
+                    if(field[j].producent != "")
+                        producer = field[j].producent;
+                    if(field[j].alkoholhalt != "")
+                        alcohol = field[j].alkoholhalt;
+
+                    if(field[j].varugrupp !=""){
+                        if(field[j].varugrupp.substring(0, 2).toUpperCase() == "ÖL"){
+                            alc_type = "beer";
+                        }
+                        else
+                        {
+                            alc_type = "wine";
+                        }
+                    }
+
+                }
+
+                var beerInfo = "<div class='beer_info'>"+
+                        "<button class='btn_close'>X</button>"+
+                        "<label class='info alcoholLabel'> Alcohol: </label>"+
+                        "<p class='alcohol'>"+alcohol+"</p>"+
+                        "<label class='info prodLabel'> Producer: </label>"+
+                        "<p class='producer'>"+producer+"</p>"+
+                        "<label class='info countryLabel'> Country: </label>"+
+                        "<p class='country'>"+countryorigin+"</p>"+
+                        "<img class='beer_wine' src='img/"+alc_type+".png'>" +
+                        "</div>";
+            }
+            $('#notebook').append(beerInfo);
+        });
+    });
+
+}
 
 //GETTING THE DATA FROM THE API
 function getData(){
@@ -769,6 +825,7 @@ function getData(){
                             "<p id='priceVal"+j+"'class='priceValue'>"+field[j].price+"</p>" +
                             "<label class='count beerleft' for='countVal"+j+"' style='display: "+is_hidden+"'>"+$('.beerleft').html(jQuery.i18n.prop(bearleft))+"</label>"+
                             "<p class='count' id='countVal' style='display: "+is_hidden+"'>"+field[j].count+"</p>" +
+                            "<button class='btn_beer_info'>i</button>" +
                         " </div>");
                     }
                 }

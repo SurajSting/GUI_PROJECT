@@ -628,6 +628,7 @@ label{
     /* border: 1px dashed; */
     display: inline-table;
 }
+
 .beer_div:hover{
     opacity: 0.6;
     
@@ -640,6 +641,45 @@ label{
     font-size: 13px;
     font-family: 'Josefin Sans', sans-serif;
     
+}
+
+.beer_info{
+    background-color: #e3e3e3;
+    position: fixed;
+    top: 200px;
+    left: 600px;
+    width: 250px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 5px 5px 5px 1px;
+    border: 3px solid;
+}
+
+.btn_close{
+    position: fixed;
+    left: 827px;
+}
+
+.beer_info>p{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.beer_info>label{
+    font-family: 'Josefin Sans', bold;
+}
+
+.beer_wine{
+    position: fixed;
+    top: 204px;
+    left: 601px;
+    width: 50px;
+    height: 50px;
+}
+
+.btn_beer_info{
+    position: relative;
+    left: 92px;
+    top: -112px;
 }
 
 #welcome {
