@@ -233,11 +233,19 @@ function cancelDrop(event){
       // $('#purchase_form div.selected_article:nth-child('+index+')').after($ if(index == 0){
             
        // }
-        
+        var beerName = $('#'+id+'').children(':nth(1)').html();
+
+        var bigFont = "23px";
+        if(beerName.length > 31){
+            bigFont = "18px";
+        }
+
+
+
     var appendThis =         
         '<div draggable="true" ondragstart="drag(event)" class="selected_article" id="r'+id+'">' +
             '<input type="hidden" value="'+id+'">' +
-        '   <p class="beer_name"> '+ $('#'+id+'').children(':nth(1)').html()+ "</p>" +
+        '   <p class="beer_name" style= "font-size:'+bigFont+'"> '+ $('#'+id+'').children(':nth(1)').html()+ "</p>" +
         '   <p class="quantity">'+quantity+'</p>' +
         '   <span class="increment">' +
         '       <button type="button" class="btn_inc">+</button>' +
@@ -729,7 +737,6 @@ $(document).on('click', '.btn_logout', function(e){
 
 
 
-
 $(document).on('click', '#info_block', function(e){
 
     $('.beer_info').remove();
@@ -768,6 +775,7 @@ $(document).on('click', '.btn_beer_info', function(e){
 
 function getBeerData(id) {
 
+    var name;
     var alcohol;
     var producer;
     var countryorigin;
@@ -782,7 +790,9 @@ function getBeerData(id) {
                     else if(field[j].ursprung != "")
                             countryorigin = field[j].ursprung;
 
-
+                    if(field[j].namn != ""){
+                        name = field[j].namn;
+                    }
 
                     if(field[j].producent != "")
                         producer = field[j].producent;
@@ -803,6 +813,7 @@ function getBeerData(id) {
 
                 var beerInfo = "<div class='beer_info'>"+
                         "<button class='btn_close'>X</button>"+
+                        "<p class='name1' id='name1'>"+name+"</p>"+
                         "<label class='info alcoholLabel'> Alcohol: </label>"+
                         "<p class='alcohol'>"+alcohol+"</p>"+
                         "<label class='info prodLabel'> Producer: </label>"+
