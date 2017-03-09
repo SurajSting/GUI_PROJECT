@@ -314,8 +314,8 @@ ul{
 
 #div_buy{
     
-        position: relative;
-    bottom: -21px;
+    position: relative;
+    bottom: -48px;
     z-index: -10;
     
 }
@@ -925,6 +925,18 @@ button{
 @media only screen and (max-width: 1024px) {
     body {
         width: 100%;
+    }
+
+    #div_selected_articles {
+        max-height: 313px;
+    }
+
+    #div_buy{
+
+        position: relative;
+        bottom: -48px;
+        z-index: -10;
+
     }
 
     .selected_article {

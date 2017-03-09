@@ -21,20 +21,13 @@
     
 </head>
 <body>
-<!--<header>
-    <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
-    </ul>
-</header>-->
+    <div class="header shadow">
 
-<div class="header shadow">
-<svg version="1.1" id="beer_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <!--SVG FOR BEER -->
+        <svg version="1.1" id="beer_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
-<g>
-	<path fill-rule="evenodd" clip-rule="evenodd" d="M281.134,67c12.345,0,24.68,0,37.025,0
+            <g>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M281.134,67c12.345,0,24.68,0,37.025,0
 		c39.473,12.401,70.734,33.817,85.677,74.794c1.777,4.871,10.563,7.846,16.653,10.382c64.204,26.803,81.504,98.771,36.503,152.052
 		c-5.063,5.992-9.153,12.799-17.738,24.953c28.104,0,48.922-0.351,69.723,0.067c52.845,1.063,83.243,31.291,83.812,84.004
 		c0.506,47.541,0.372,95.098,0.021,142.64c-0.393,53.916-30.879,84.385-85.212,85.491c-20.021,0.408-40.057,0.066-63.032,0.066
@@ -49,72 +42,64 @@
 		c20.259,0.27,28.281-15.124,28.503-34.09C148.261,335.358,148.055,311.608,148.055,283.7z M519.833,569.353
 		c0-57.608,0-112.479,0-167.206c-26.188,0-50.248,0-73.1,0c0,57.066,0,111.988,0,167.206
 		C471.692,569.353,494.44,569.353,519.833,569.353z"/>
-</g>
-</svg>
-    <svg version="1.1" class="undo_redo" id="btn_undo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            </g>
+        </svg>
+
+        <!--SVG FOR UNDO REDO -->
+        <svg version="1.1" class="undo_redo" id="btn_undo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          width="497.25px" height="497.25px" viewBox="0 0 497.25 497.25" style="enable-background:new 0 0 497.25 497.25;"
          xml:space="preserve" >
-        <g id="undo" hidden>
-            <path d="M248.625,89.25V0l-127.5,127.5l127.5,127.5V140.25c84.15,0,153,68.85,153,153c0,84.15-68.85,153-153,153
+            <g id="undo" hidden>
+                <path d="M248.625,89.25V0l-127.5,127.5l127.5,127.5V140.25c84.15,0,153,68.85,153,153c0,84.15-68.85,153-153,153
                 c-84.15,0-153-68.85-153-153h-51c0,112.2,91.8,204,204,204s204-91.8,204-204S360.825,89.25,248.625,89.25z"/>
-        </g>
-    </svg>
-    
+            </g>
+        </svg>
         <svg version="1.1" class="undo_redo" id="btn_redo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          width="497.25px" height="497.25px" viewBox="0 0 497.25 497.25" style="enable-background:new 0 0 497.25 497.25;"
          xml:space="preserve" >
-        <g id="redo" hidden>
-            <path d="M248.625,89.25V0l-127.5,127.5l127.5,127.5V140.25c84.15,0,153,68.85,153,153c0,84.15-68.85,153-153,153
+            <g id="redo" hidden>
+
+                <path d="M248.625,89.25V0l-127.5,127.5l127.5,127.5V140.25c84.15,0,153,68.85,153,153c0,84.15-68.85,153-153,153
                 c-84.15,0-153-68.85-153-153h-51c0,112.2,91.8,204,204,204s204-91.8,204-204S360.825,89.25,248.625,89.25z"/>
-        </g>
-    </svg>
-    <div class="content content_width float_left">
-        <h2><div class="gettext" id='headline'></div></h2>
-    </div>
-    <div class="content flagdiv_width float_right">
-        <ul id="flags">
-            <li><p class="flag-icon flag-icon-gb translate"><text hidden>eg</text></p></li>
-            <li><p class="flag-icon flag-icon-se translate"><text hidden>se</text></p></li>
-            
-        </ul>
-        <div id="loginform">
-            <form class="margin_bottom" id="margin_bottom">
-            <label><div id = "uhead">UserName</div></label>
-            <input class="login input-sm" type="text"  name="uName" id="uName" required>
-            <label><div id = "phead">Password</div></label>
-            <input class="login input-sm" type="password"  name="pWord" id="pWord" required>
-            <button class="btn_success" type="button" id="btlogin">Login</button>
-        </form>
-                 <div id="welcome" align="center" class="gettext" hidden></div>  
-        </div>
-       
-        
-    </div>
-</div>
+            </g>
+        </svg>
 
-<!-- Add your site or application content here -->
-<div id="block" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-<div id="info_block"></div>
-<div id="login_block"></div>
 
-<div class="page-wrap">
-        
-    
-    <div class="content content_width left_pane float_left well shadow">
-   
-    <div>
-        <div id="notebook">
-        
+        <div class="content content_width float_left">
+            <h2><div class="gettext" id='headline'></div></h2>
         </div>
-        
+        <div class="content flagdiv_width float_right">
+            <ul id="flags">
+                <li><p class="flag-icon flag-icon-gb translate"><text hidden>eg</text></p></li>
+                <li><p class="flag-icon flag-icon-se translate"><text hidden>se</text></p></li>
+            </ul>
+
+            <div id="loginform">
+                <form class="margin_bottom" id="margin_bottom">
+                    <label><div id = "uhead">UserName</div></label>
+                    <input class="login input-sm" type="text"  name="uName" id="uName" required>
+                    <label><div id = "phead">Password</div></label>
+                    <input class="login input-sm" type="password"  name="pWord" id="pWord" required>
+                    <button class="btn_success" type="button" id="btlogin">Login</button>
+                </form>
+                <div id="welcome" align="center" class="gettext" hidden></div>
+            </div>
+        </div>
     </div>
-    <div id="right_pane" class="content content_width right_pane float_right well shadow">
-<p id="selectit"> </p>
+
+    <!-- BLOCK DIVS -->
+    <div id="block" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="info_block"></div>
+    <div id="login_block"></div>
+    <div class="page-wrap">
+        <div class="content content_width left_pane float_left well shadow">
+            <div>
+                <div id="notebook"></div>
+            </div>
+            <div id="right_pane" class="content content_width right_pane float_right well shadow">
+                <p id="selectit"> </p>
                 <div id="div_selected_articles">
                     <form id="purchase_form" action="" ondragover="allowDrop(event)" ondrop="cancelDrop(event)">
-                        <!--<div class="selected_article" style="Display: none">Dont mind me</p>-->
-
-
                     </form>
                     <div id="div_buy">
                         <label id="label_total" for="total"></label>
@@ -122,23 +107,19 @@
                         <button type="submit" class="btn" id="btn_purchase"></button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Team 17: Wang, Murali, Larsson</p>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+        <script type="text/javascript" src="js/jquery.i18n.properties.js"></script>
+        <script src="js/main.js"></script>
     </div>
-</div>
-
-<footer class="footer">
-    <p>Team 17: Wang, Murali, Larsson</p>
-</footer>
-
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-<script src="js/plugins.js"></script>
-<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
-<script type="text/javascript" src="js/jquery.i18n.properties.js"></script>
-<script type="text/javascript" language="JavaScript" src="js/jquery.i18n.properties-min.js"></script>
-<script src="js/main.js"></script>
-
-<script>
-
-</script>
 </body>
 </html>
