@@ -809,7 +809,7 @@ function getBeerData(id) {
                         "<p class='producer'>"+producer+"</p>"+
                         "<label class='info countryLabel'> Country: </label>"+
                         "<p class='country'>"+countryorigin+"</p>"+
-                        "<img class='beer_wine' src='img/"+alc_type+".svg'>" +
+                        "<img class='beer_wine' src='image/"+alc_type+".svg'>" +
                         "</div>";
             }
             $('#notebook').append(beerInfo);
