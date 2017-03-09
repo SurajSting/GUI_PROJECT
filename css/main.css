@@ -920,6 +920,13 @@ p, label, svg, div {
         width: 100%;
     }
 
+    .selected_article {
+        height: 66px;
+        border: dashed 1px;
+        float: left;
+        width: 99%;
+    }
+
     #headline {
         position: relative;
         right: -78px;
@@ -1018,6 +1025,29 @@ p, label, svg, div {
         position: absolute;
         left: 952px;
         top: 71px;
+    }
+
+    .beer_info{
+        background-color: #e3e3e3;
+        position: fixed;
+        top: 214px;
+        left: 50%;
+        width: 250px;
+        margin-left: -125px;
+    }
+
+    .beer_wine {
+        position: fixed;
+        top: 230px;
+        left: 500px;
+        width: 75px;
+        height: 75px;
+    }
+
+    .btn_close {
+        position: fixed;
+        left: 652px;
+        top: 220px;
     }
 
 }
