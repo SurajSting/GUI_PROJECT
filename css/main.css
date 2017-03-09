@@ -261,6 +261,7 @@ ul{
     border: 1px solid #e3e3e3;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+
 }
 
 .footer{
@@ -420,6 +421,8 @@ label{
     float: left;
     margin-top: 5px;
     padding: 1px;
+    position: relative;
+    z-index: 100;
 }
 
 #links{
@@ -633,7 +636,6 @@ label{
 
 .beer_div:hover{
     opacity: 0.6;
-    
 }
 .beer_div > p{
     font-family: 'Pirata One', cursive;
@@ -656,6 +658,8 @@ label{
     top: 0px;
     z-index: 101;
 }
+
+
 
 .dummy_div{
     position: absolute;
@@ -766,6 +770,7 @@ h2{
     font-size: 18px;
     top: -44px;
     left: -17px;
+    z-index: 3;
 }
 #purchase_form{
     overflow-y: scroll;
@@ -794,7 +799,7 @@ height: 66px;
 }
 
 #div_selected_articles{
-    max-height: 500px;
+    max-height: 430px;
 }
 .drink_type_name{
     float: left;
@@ -1010,6 +1015,8 @@ button{
         top: -37px;
         left: -50px;
     }
+
+
 
     #btn_undo{
         position: absolute;
