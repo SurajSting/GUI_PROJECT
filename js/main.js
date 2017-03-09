@@ -690,10 +690,7 @@ $(document).on("click", '.btn_success', function(e){
 
                         });
 
-                        
-                        //$("#welcome").show().html(jQuery.i18n.prop(back));
-
-
+                  
                         if(userid[uName] == "3"){
                             
                             $("#margin_bottom").hide();
@@ -781,6 +778,9 @@ function getBeerData(id) {
     var countryorigin;
     var alc_type;
 
+   
+
+
     $.getJSON("http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jorass&action=beer_data_get&beer_id=" + id + "", function (result) {
         $.each(result, function (i, field) {
             if(i == "payload") {
@@ -811,17 +811,27 @@ function getBeerData(id) {
 
                 }
 
+                
+                var Alcohol = 'Alcohol';
+                var Producer = 'Producer';
+                var Countryorigin = 'Countryorigin';
+
+
                 var beerInfo = "<div class='beer_info'>"+
                         "<button class='btn_close'>X</button>"+
                         "<p class='name1' id='name1'>"+name+"</p>"+
-                        "<label class='info alcoholLabel'> Alcohol: </label>"+
+                        "<label class='info alcoholLabel' id='AL'> "+jQuery.i18n.prop(Alcohol)+"</label>"+
                         "<p class='alcohol'>"+alcohol+"</p>"+
-                        "<label class='info prodLabel'> Producer: </label>"+
+                        "<label class='info prodLabel'>"+jQuery.i18n.prop(Producer)+"</label>"+
                         "<p class='producer'>"+producer+"</p>"+
-                        "<label class='info countryLabel'> Country: </label>"+
+                        "<label class='info countryLabel'>"+jQuery.i18n.prop(Countryorigin)+"</label>"+
                         "<p class='country'>"+countryorigin+"</p>"+
                         "<img class='beer_wine' src='image/"+alc_type+".svg'>" +
                         "</div>";
+
+
+                console.log(jQuery.i18n.prop(Alcohol));
+            
             }
             $('#notebook').append(beerInfo);
         });
