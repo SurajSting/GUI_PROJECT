@@ -681,10 +681,10 @@ $(document).on("click", '.btn_success', function(e){
                         _login_ = 1;
 
 
-                        $(document).on("click", '.beer_div', function(e){
+                        $(document).on("click", '.dummy_div', function(e){
                             
-                            beerCountRightPaneIncrement(e.currentTarget.id);
-                            undoStorage.push([e.currentTarget.id, 'inc']);
+                            beerCountRightPaneIncrement(e.currentTarget.parentElement.id);
+                            undoStorage.push([e.currentTarget.parentElement.id, 'inc']);
                             
                             redoStorage = [];
 
@@ -763,11 +763,14 @@ function showwel(identy, usernames){
 }
 
 $(document).on('click', '.btn_beer_info', function(e){
-    var id = e.currentTarget.parentElement.id;
-    getBeerData(id);
 
-    $('#info_block').css('display', 'initial');
+        var id = e.currentTarget.parentElement.id;
+        getBeerData(id);
+
+        $('#info_block').css('display', 'initial');
 });
+
+
 
 
 function getBeerData(id) {
@@ -861,15 +864,17 @@ function getData(){
                         {
                             is_hidden = 'initial';
                         }
-                        $("#notebook").append("<div class='beer_div' id="+field[j].beer_id+">"+
-                            "<label class='nameLabel gettext'>"+$('.nameLabel').html(jQuery.i18n.prop(names))+"</label>" +
-                            "<p class='name'>"+field[j].namn+"</p> " +
-                            "<label class='priceLabel gettext' for='priceVal"+j+"'>"+$('.priceLabel').html(jQuery.i18n.prop(prices))+"</label>"+            
-                            "<p id='priceVal"+j+"'class='priceValue'>"+field[j].price+"</p>" +
-                            "<label class='count beerleft' for='countVal"+j+"' style='display: "+is_hidden+"'>"+$('.beerleft').html(jQuery.i18n.prop(bearleft))+"</label>"+
-                            "<p class='count' id='countVal' style='display: "+is_hidden+"'>"+field[j].count+"</p>" +
-                            "<button class='btn_beer_info'>i</button>" +
-                        " </div>");
+                        $("#notebook").append("" +
+                            "<div class='beer_div' id="+field[j].beer_id+">"+
+                                "<label class='nameLabel gettext'>"+$('.nameLabel').html(jQuery.i18n.prop(names))+"</label>" +
+                                "<p class='name'>"+field[j].namn+"</p> " +
+                                "<label class='priceLabel gettext' for='priceVal"+j+"'>"+$('.priceLabel').html(jQuery.i18n.prop(prices))+"</label>"+
+                                "<p id='priceVal"+j+"'class='priceValue'>"+field[j].price+"</p>" +
+                                "<label class='count beerleft' for='countVal"+j+"' style='display: "+is_hidden+"'>"+$('.beerleft').html(jQuery.i18n.prop(bearleft))+"</label>"+
+                                "<p class='count' id='countVal' style='display: "+is_hidden+"'>"+field[j].count+"</p>" +
+                                "<img class='btn_beer_info' src='image/info.svg'>" +
+                                "<div class='dummy_div'></div>" +
+                            "</div>");
                     }
                 }
             }
