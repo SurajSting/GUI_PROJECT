@@ -728,6 +728,26 @@ $(document).on('click', '.btn_logout', function(e){
 });
 
 
+
+
+$(document).on('click', '#info_block', function(e){
+
+    $('.beer_info').remove();
+    $('#info_block').css('display', 'none');
+});
+
+
+$(document).on('click', '.btn_close', function(e){
+
+    var div_beer_info = e.currentTarget.parentElement.remove();
+    console.log("DIV" + div_beer_info);
+
+    $('#info_block').css('display', 'none');
+});
+
+
+
+
 function showwel(identy, usernames){
 
     var useru = 'User';
@@ -740,9 +760,11 @@ function showwel(identy, usernames){
 
 $(document).on('click', '.btn_beer_info', function(e){
     var id = e.currentTarget.parentElement.id;
-
     getBeerData(id);
+
+    $('#info_block').css('display', 'initial');
 });
+
 
 function getBeerData(id) {
 
@@ -787,7 +809,7 @@ function getBeerData(id) {
                         "<p class='producer'>"+producer+"</p>"+
                         "<label class='info countryLabel'> Country: </label>"+
                         "<p class='country'>"+countryorigin+"</p>"+
-                        "<img class='beer_wine' src='img/"+alc_type+".png'>" +
+                        "<img class='beer_wine' src='img/"+alc_type+".svg'>" +
                         "</div>";
             }
             $('#notebook').append(beerInfo);
