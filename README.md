@@ -9,3 +9,5 @@ The "bundle" folder consists of all languages library. "css" folder stores the c
 In "js" folder, main.js is the main Javascript file which contains all the needed functions. The functionality is written in the main.js. All JS files are well documented.  
 
 There are 4 folders and 1 html files in this project. "js" folder store all the javascript files for this website. 
+
+Contributors: Group 17: Larsson, Petter; Murali, Suraj; Wang, Han
